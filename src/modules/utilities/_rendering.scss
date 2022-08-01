@@ -1,0 +1,13 @@
+/**
+ * @file: modules/utilities/_rendering.scss
+ */
+
+// Utilities for sets an image renders if it is scaled up or down from its original dimensions.
+@if (map-get($rendering, 'image-optimization')) {
+  @include utility($classname: 'image-optimize', $property: image-rendering, $modifier: $image-rendering);
+}
+
+// Utilities for fine tune optimization by suggesting to the browser as to how it should render text on the screen.
+@if (map-get($rendering, 'text-optimization')) {
+  @include utility($classname: 'text-optimize', $property: text-rendering, $modifier: $text-rendering);
+}

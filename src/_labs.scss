@@ -1,0 +1,12 @@
+/**
+ * @file: _labs.scss
+ */
+
+// enable or disable labs component
+$labs:(
+  'component-name': false
+);
+
+@if (map-get($labs, 'component-name')) {
+  // code here
+}

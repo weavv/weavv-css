@@ -1,0 +1,20 @@
+/**
+ * @file: configs/_optional.scss
+ */
+
+// create an explicitly separate version with
+// ID to avoid CSS conflicts or when more than
+// one CSS library or framework is being used.
+// Default is empty. (e.g. new-) with a `dash`.
+$id: "";
+
+// by default using `(` and `)` symbol character
+// to separate in between the {prefix} (variant)
+// and the {class_name}.
+$prefix-open: "("; // do not empty!
+$prefix-close: ")"; // do not empty!
+
+// override existing css with this option,
+// default is empty, to enable add `!important`.
+$override: "";
+

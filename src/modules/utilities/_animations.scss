@@ -1,0 +1,44 @@
+/**
+ * @file: modules/utilities/_animations.scss
+ */
+
+// Utilities for sets the animation control with loops, durations and delays.
+@if (map-get($animations, 'animation')) {
+  @include variant(()) using ($props...) {
+    #{$id}animation {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        animation-duration: 1s #{$override};
+        animation-fill-mode: both #{$override};
+      }
+    }
+  }
+}
+@if (map-get($animations, 'loop')) {
+  @include utility($classname: 'animation.loop', $property: animation-iteration-count, $modifier: $animation-loop);
+}
+@if (map-get($animations, 'delay')) {
+  @include utility($classname: 'animation.delay', $property: animation-delay, $modifier: $animation-delay);
+}
+@if (map-get($animations, 'duration')) {
+  @include utility($classname: 'animation.duration', $property: animation-duration, $modifier: $animation-duration);
+}
+
+// Utilities for sets the blur animation to an element.
+@if (map-get($animations, 'blur')) {
+  @include keyframe($modifier: $animation-blur, $variant: $v-animation-blur);
+}
+
+// Utilities for sets the fading animation to an element.
+@if (map-get($animations, 'fade')) {
+  @include keyframe($modifier: $animation-fade, $variant: $v-animation-fade);
+}
+
+// Utilities for sets the rolling animation to an element.
+@if (map-get($animations, 'roll')) {
+  @include keyframe($modifier: $animation-roll, $variant: $v-animation-roll);
+}
+
+// Utilities for sets the sliding animation to an element.
+@if (map-get($animations, 'slide')) {
+  @include keyframe($modifier: $animation-slide, $variant: $v-animation-slide);
+}

@@ -1,0 +1,2230 @@
+/**
+ * @file: configs/_modifiers.scss
+ * @desc: Modifier settings for each utility.
+ */
+
+$of: \/; // escaping `forward-slash` (DO NOT EDIT)
+
+/*
+  @params $modifier, $value
+*/
+
+$screens: (
+  xs: 320px,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  1k: 1280px,
+  2k: 1920px,
+  3k: 2560px,
+  // 4k: 3840px
+  // 5k: 5120px,
+  // 6k: 5760px,
+  // 7k: 7000px,
+  // 8k: 7680px
+);
+
+/* animations */
+
+$animation-loop: (
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  infinite: infinite
+);
+
+$animation-delay: (
+  2: 2s,
+  3: 3s,
+  4: 4s,
+  5: 5s
+);
+
+$animation-duration: (
+  300: 300ms,
+  500: 500ms,
+  800: 800ms,
+  2000: 2s,
+  3000: 3s,
+  4000: 4s
+);
+
+$animation-fade:
+  (fade-in, opacity, 0, null, null, opacity, 1, null, null),
+  (fade-in-bottom-left, opacity, 0, transform, translate3d(-100%,100%,0), opacity, 1, transform, translate3d(0, 0, 0)),
+  (fade-in-bottom-right, opacity, 0, transform, translate3d(100%,100%,0), opacity, 1, transform, translate3d(0, 0, 0)),
+  (fade-in-down, opacity, 0, transform, translate3d(0,-100%,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-in-left, opacity, 0, transform, translate3d(-100%,0,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-in-right, opacity, 0, transform, translate3d(100%,0,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-in-top-left, opacity, 0, transform, translate3d(-100%,-100%,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-in-top-right, opacity, 0, transform, translate3d(100%,-100%,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-in-up, opacity, 0, transform, translate3d(0,100%,0), opacity, 1, transform, translate3d(0,0,0)),
+  (fade-out, opacity, 1, null, null, opacity, 0, null, null),
+  (fade-out-bottom-left, opacity, 1, transform, translate3d(0,0,0), opacity, 1, transform, translate3d(-100%,100%,0)),
+  (fade-out-bottom-right, opacity, 1, transform, translate3d(0,0,0), opacity, 1, transform, translate3d(100%,100%,0)),
+  (fade-out-down, opacity, 1, transform, translate3d(0,0,0), opacity, 1, transform, translate3d(0,100%,0)),
+  (fade-out-left, opacity, 1, transform, translate3d(0,0,0), opacity, 0, transform, translate3d(-100%,0,0)),
+  (fade-out-right, opacity, 1, transform, translate3d(0,0,0), opacity, 0, transform, translate3d(100%,0,0)),
+  (fade-out-top-left, opacity, 1, transform, translate3d(0,0,0), opacity, 0, transform, translate3d(-100%,-100%,0)),
+  (fade-out-top-right, opacity, 1, transform, translate3d(0,0,0), opacity, 0, transform, translate3d(100%,-100%,0)),
+  (fade-out-top-up, opacity, 1, transform, translate3d(0,0,0), opacity, 0, transform, translate3d(0,-100%,0));
+
+$animation-blur:
+  (blur-in, opacity, 0, filter, blur(4px), opacity, 1, filter, blur(0)),
+  (blur-out, opacity, 1, filter, blur(0), opacity, 1, filter, blur(4px));
+
+$animation-roll:
+  (roll-in-left, opacity, 0, transform, translate3d(-100%,0,0), opacity, 1, transform, translate3d(0,0,0)),
+  (roll-in-right, opacity, 0, transform, translate3d(100%, 0, 0) rotate3d(0,0,1,120deg), opacity, 1, transform, translate3d(0,0,0)),
+  (roll-out-left, opacity, 1, null, null, opacity, 0, transform, translate3d(-100%,0,0) rotate3d(0,0,1,-120deg)),
+  (roll-out-right, opacity, 1, null, null, opacity, 0, transform, translate3d(100%,0,0) rotate3d(0,0,1,120deg));
+
+$animation-slide:
+  (slide-in-down, transform, translate3d(0,-100%,0), visibility, visible, null, null, transform, translate3d(0,0,0)),
+  (slide-in-left, transform, translate3d(-100%,0,0), visibility, visible, null, null, transform, translate3d(0,0,0)),
+  (slide-in-right, transform, translate3d(100%,0,0), visibility, visible, null, null, transform, translate3d(0,0,0)),
+  (slide-in-up, transform, translate3d(0,100%,0), visibility, visible, null, null, transform, translate3d(0,0,0)),
+  (slide-out-down, transform, translate3d(0,0,0), null, null, visibility, hidden, transform, translate3d(0,100%,0)),
+  (slide-out-left, transform, translate3d(0,0,0), null, null, visibility, hidden, transform, translate3d(-100%,0,0)),
+  (slide-out-right, transform, translate3d(0,0,0), null, null, visibility, hidden, transform, translate3d(100%,0,0)),
+  (slide-out-up, transform, translate3d(0,0,0), null, null, visibility, hidden, transform, translate3d(0,-100%,0));
+
+/* Backgrounds */
+
+$background-attachment: (
+  fixed: fixed,
+  local: local,
+  scroll: scroll
+);
+
+$background-blend-mode: (
+  color-burn: color-burn,
+  color-dodge: color-dodge,
+  color: color,
+  darken: darken,
+  difference: difference,
+  exclusion: exclusion,
+  hard-light: hard-light,
+  hue: hue,
+  lighten: lighten,
+  luminosity: luminosity,
+  multiple: multiply,
+  normal: normal,
+  overlay: overlay,
+  saturation: saturation,
+  screen: screen,
+  soft-light: soft-light
+);
+
+$background-position: (
+  top: top,
+  bottom: bottom,
+  center: center,
+  left: left,
+  left-top: left top,
+  left-bottom: left bottom,
+  right: right,
+  right-top: right top,
+  right-bottom: right bottom
+);
+
+$background-repeat: (
+  repeat: repeat,
+  no-repeat: no-repeat,
+  repeat-x: repeat-x,
+  repeat-y: repeat-y,
+  repeat-round: round,
+  repeat-space: space
+);
+
+$background-size: (
+  auto: auto,
+  cover: cover,
+  contain: contain
+);
+
+$background-border-angle: (
+  45: 45deg,
+  60: 60deg
+);
+
+$background-border-length: (
+  10: 10px,
+  20: 20px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  70: 70px,
+  80: 80px
+);
+
+$background-border-space: (
+  10: 10px,
+  20: 20px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  70: 70px,
+  80: 80px
+);
+
+$background-border-size: (
+  6: 6px,
+  9: 9px,
+  12: 12px,
+  14: 14px,
+  18: 18px,
+  24: 24px,
+  32: 32px
+);
+
+$background-gradient-angle: (
+  0: 0deg,
+  45: 45deg,
+  90: 90deg,
+  180: 180deg
+);
+
+$background-gradient-space: (
+  10: 10%,
+  20: 20%,
+  30: 30%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  80: 80%,
+  90: 90%
+);
+
+/* Borders */
+
+$border-style: (
+  none: none,
+  dashed: dashed,
+  dotted: dotted,
+  solid: solid
+);
+
+$border-radius: (
+  none: 0,
+  sm: 0.125rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  full: 9999px
+);
+
+$border-width: (
+  0: 0,
+  2: 0.125em, // 2px
+  4: 0.25em, // 4px
+  8: 0.5em // 8px
+);
+
+$border-curve-object: (
+  0: 0%,
+  10: 10%,
+  20: 20%,
+  30: 30%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  80: 80%,
+  90: 90%,
+  100: 100%
+);
+
+$border-dissect: (
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px
+);
+
+/* Effects */
+
+$opacity: (
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1
+);
+
+$shadow-size:
+  (md, 6px),
+  (lg, 15px),
+  (xl-1, 25px),
+  (xl-2, 50px);
+
+$box-shadow: (
+  default: (0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)),
+  xs: (0 0 0 1px rgba(0, 0, 0, 0.05)),
+  sm: (0 1px 2px 0 rgba(0, 0, 0, 0.05)),
+  md: (0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)),
+  lg: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)),
+  xl-1: (0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)),
+  xl-2: (0 25px 50px -12px rgba(0, 0, 0, 0.25)),
+  inner: (inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)),
+  outline: (0 0 0 3px rgba(66, 153, 225, 0.5)),
+  none: none
+);
+
+$box-shadow-dreamy: (
+  dreamy: (0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 6px 0 rgba(0, 0, 0, 0.05), 0 1px 9px 0 rgba(0, 0, 0, 0.04), 0 1px 12px 0 rgba(0, 0, 0, 0.03)),
+  dreamy-xs: (0 0 0 1px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0, 0, 0, 0.01)),
+  dreamy-sm: (0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 6px 0 rgba(0, 0, 0, 0.03), 0 1px 8px 0 rgba(0, 0, 0, 0.02)),
+  dreamy-md: (0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 3px 7px -1px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.04), 0 1px 9px -1px rgba(0, 0, 0, 0.03)),
+  dreamy-lg: (0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 16px -3px rgba(0, 0, 0, 0.05), 0 3px 17px -3px rgba(0, 0, 0, 0.03), 0 1px 18px -3px rgba(0, 0, 0, 0.01)),
+  dreamy-xl-1: (0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 26px -3px rgba(0, 0, 0, 0.04), 0 3px 27px -3px rgba(0, 0, 0, 0.02), 0 1px 28px -3px rgba(0, 0, 0, 0.01)),
+  dreamy-xl-2: (0 10px 35px -3px rgba(0, 0, 0, 0.08), 0 4px 36px -3px rgba(0, 0, 0, 0.07), 0 3px 37px -3px rgba(0, 0, 0, 0.06), 0 1px 38px -3px rgba(0, 0, 0, 0.05))
+);
+
+$bg-gradient-presets: (
+  1: (45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%),
+  2: (to top, #a18cd1 0%, #fbc2eb 100%),
+  3: (to top, #fad0c4 0%, #fad0c4 1%, #ffd1ff 100%),
+  4: (to right, #ffecd2 0%, #fcb69f 100%),
+  5: (to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%),
+  6: (to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%),
+  7: (120deg, #f6d365 0%, #fda085 100%),
+  8: (to top, #fbc2eb 0%, #a6c1ee 100%),
+  9: (to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%),
+  10: (120deg, #a1c4fd 0%, #c2e9fb 100%),
+  11: (120deg, #d4fc79 0%, #96e6a1 100%),
+  12: (120deg, #84fab0 0%, #8fd3f4 100%),
+  13: (to top, #cfd9df 0%, #e2ebf0 100%),
+  14: (120deg, #a6c0fe 0%, #f68084 100%),
+  15: (120deg, #fccb90 0%, #d57eeb 100%),
+  16: (120deg, #f093fb 0%, #f5576c 100%),
+  17: (120deg, #fdfbfb 0%, #ebedee 100%),
+  18: (to right, #4facfe 0%, #00f2fe 100%),
+  19: (to right, #43e97b 0%, #38f9d7 100%),
+  20: (to right, #fa709a 0%, #fee140 100%),
+  21: (to top, #30cfd0 0%, #330867 100%),
+  22: (to top, #a8edea 0%, #fed6e3 100%),
+  23: (to top, #5ee7df 0%, #b490ca 100%),
+  24: (to top, #d299c2 0%, #fef9d7 100%),
+  25: (135deg, #f5f7fa 0%, #c3cfe2 100%),
+  26: (135deg, #667eea 0%, #764ba2 100%),
+  27: (135deg, #fdfcfb 0%, #e2d1c3 100%),
+  28: (120deg, #89f7fe 0%, #66a6ff 100%),
+  29: (to top, #fddb92 0%, #d1fdff 100%),
+  30: (to top, #9890e3 0%, #b1f4cf 100%),
+  31: (to top, #ebc0fd 0%, #d9ded8 100%),
+  32: (to top, #96fbc4 0%, #f9f586 100%),
+  33: (180deg, #2af598 0%, #009efd 100%),
+  34: (to top, #cd9cf2 0%, #f6f3ff 100%),
+  35: (to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%),
+  36: (to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%),
+  37: (to right, #6a11cb 0%, #2575fc 100%),
+  38: (to top, #37ecba 0%, #72afd3 100%),
+  39: (to top, #ebbba7 0%, #cfc7f8 100%),
+  40: (to top, #fff1eb 0%, #ace0f9 100%),
+  41: (to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%),
+  42: (to top, #c471f5 0%, #fa71cd 100%),
+  43: (to top, #48c6ef 0%, #6f86d6 100%),
+  44: (to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%),
+  45: (to top, #feada6 0%, #f5efef 100%),
+  46: (to top, #e6e9f0 0%, #eef1f5 100%),
+  47: (to top, #accbee 0%, #e7f0fd 100%),
+  48: (-20deg, #e9defa 0%, #fbfcdb 100%),
+  49: (to top, #c1dfc4 0%, #deecdd 100%),
+  50: (to top, #0ba360 0%, #3cba92 100%),
+  51: (to top, #00c6fb 0%, #005bea 100%),
+  52: (to right, #74ebd5 0%, #9face6 100%),
+  53: (to top, #6a85b6 0%, #bac8e0 100%),
+  54: (to top, #a3bded 0%, #6991c7 100%),
+  55: (to top, #9795f0 0%, #fbc8d4 100%),
+  56: (to top, #a7a6cb 0%, #8989ba 52%, #8989ba 100%),
+  57: (to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%),
+  58: (to top, #fcc5e4 0%, #fda34b 15%, #ff7882 35%, #c8699e 52%, #7046aa 71%, #0c1db8 87%, #020f75 100%),
+  59: (to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%),
+  60: (to top, #f43b47 0%, #453a94 100%),
+  61: (to top, #4fb576 0%, #44c489 30%, #28a9ae 46%, #28a2b7 59%, #4c7788 71%, #6c4f63 86%, #432c39 100%),
+  62: (to top, #0250c5 0%, #d43f8d 100%),
+  63: (to top, #88d3ce 0%, #6e45e2 100%),
+  64: (to top, #d9afd9 0%, #97d9e1 100%),
+  65: (to top, #7028e4 0%, #e5b2ca 100%),
+  66: (15deg, #13547a 0%, #80d0c7 100%),
+  67: (to top, #505285 0%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 100%),
+  68: (to top, #ff0844 0%, #ffb199 100%),
+  69: (45deg, #93a5cf 0%, #e4efe9 100%),
+  70: (to right, #434343 0%, black 100%),
+  71: (to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%),
+  72: (45deg, #93a5cf 0%, #e4efe9 100%),
+  73: (to right, #92fe9d 0%, #00c9ff 100%),
+  74: (to right, #ff758c 0%, #ff7eb3 100%),
+  75: (to right, #868f96 0%, #596164 100%),
+  76: (to top, #c79081 0%, #dfa579 100%),
+  77: (45deg, #8baaaa 0%, #ae8b9c 100%),
+  78: (to right, #f83600 0%, #f9d423 100%),
+  79: (-20deg, #b721ff 0%, #21d4fd 100%),
+  80: (-20deg, #6e45e2 0%, #88d3ce 100%),
+  81: (-20deg, #d558c8 0%, #24d292 100%),
+  82: (60deg, #abecd6 0%, #fbed96 100%),
+  83: (to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%),
+  84: (to top, #5f72bd 0%, #9b23ea 100%),
+  85: (to top, #09203f 0%, #537895 100%),
+  86: (-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%),
+  87: (-20deg, #dcb0ed 0%, #99c99c 100%),
+  88: (to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%),
+  89: (to top, #c71d6f 0%, #d09693 100%),
+  90: (60deg, #96deda 0%, #50c9c3 100%),
+  91: (to top, #f77062 0%, #fe5196 100%),
+  92: (to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%),
+  93: (to right, #a8caba 0%, #5d4157 100%),
+  94: (60deg, #29323c 0%, #485563 100%),
+  95: (-60deg, #16a085 0%, #f4d03f 100%),
+  96: (-60deg, #ff5858 0%, #f09819 100%),
+  97: (-20deg, #2b5876 0%, #4e4376 100%),
+  98: (-20deg, #00cdac 0%, #8ddad5 100%),
+  99: (to top, #4481eb 0%, #04befe 100%),
+  100: (to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%),
+  101: (45deg, #874da2 0%, #c43a30 100%),
+  102: (to top, #4481eb 0%, #04befe 100%),
+  103: (to top, #e8198b 0%, #c7eafd 100%),
+  104: (-20deg, #f794a4 0%, #fdd6bd 100%),
+  105: (60deg, #64b3f4 0%, #c2e59c 100%),
+  106: (to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%),
+  107: (to top, #0fd850 0%, #f9f047 100%),
+  108: (to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%),
+  109: (45deg, #ee9ca7 0%, #ffdde1 100%),
+  110: (to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%),
+  111: (to top, #209cff 0%, #68e0cf 100%),
+  112: (to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%),
+  113: (to top, #e6b980 0%, #eacda3 100%),
+  114: (to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%),
+  115: (to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%),
+  116: (to top, #9be15d 0%, #00e3ae 100%),
+  117: (to right, #ed6ea0 0%, #ec8c69 100%),
+  118: (to right, #ffc3a0 0%, #ffafbd 100%),
+  119: (to top, #cc208e 0%, #6713d2 100%),
+  120: (to top, #b3ffab 0%, #12fff7 100%),
+  121: (to top, #65bd60 0%, #5ac1a8 25%, #3ec6ed 50%, #b7ddb7 75%, #fef381 100%),
+  122: (to right, #243949 0%, #517fa4 100%),
+  123: (-20deg, #fc6076 0%, #ff9a44 100%),
+  124: (to top, #dfe9f3 0%, white 100%),
+  125: (to right, #00dbde 0%, #fc00ff 100%),
+  126: (to right, #f9d423 0%, #ff4e50 100%),
+  127: (to top, #50cc7f 0%, #f5d100 100%),
+  128: (to right, #0acffe 0%, #495aff 100%),
+  129: (-20deg, #616161 0%, #9bc5c3 100%),
+  130: (60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%),
+  131: (to top, #df89b5 0%, #bfd9fe 100%),
+  132: (to right, #ed6ea0 0%, #ec8c69 100%),
+  133: (to right, #d7d2cc 0%, #304352 100%),
+  134: (to top, #e14fad 0%, #f9d423 100%),
+  135: (to top, #b224ef 0%, #7579ff 100%),
+  136: (to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%),
+  137: (to right, #ec77ab 0%, #7873f5 100%),
+  138: (to top, #007adf 0%, #00ecbc 100%),
+  139: (-225deg, #20E2D7 0%, #F9FEA5 100%),
+  140: (-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%),
+  141: (-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%),
+  142: (-225deg, #DFFFCD 0%, #90F9C4 48%, #39F3BB 100%),
+  143: (-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%),
+  144: (-225deg, #A8BFFF 0%, #884D80 100%),
+  145: (-225deg, #5271C4 0%, #B19FFF 48%, #ECA1FE 100%),
+  146: (-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%),
+  147: (-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%),
+  148: (-225deg, #B6CEE8 0%, #F578DC 100%),
+  149: (-225deg, #FFFEFF 0%, #D7FFFE 100%),
+  150: (-225deg, #E3FDF5 0%, #FFE6FA 100%),
+  151: (-225deg, #7DE2FC 0%, #B9B6E5 100%),
+  152: (-225deg, #CBBACC 0%, #2580B3 100%),
+  153: (-225deg, #B7F8DB 0%, #50A7C2 100%),
+  154: (-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%),
+  155: (-225deg, #77FFD2 0%, #6297DB 48%, #1EECFF 100%),
+  156: (-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%),
+  157: (-225deg, #D4FFEC 0%, #57F2CC 48%, #4596FB 100%),
+  158: (-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%),
+  159: (-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%),
+  160: (-225deg, #65379B 0%, #886AEA 53%, #6457C6 100%),
+  161: (-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%),
+  162: (-225deg, #7742B2 0%, #F180FF 52%, #FD8BD9 100%),
+  163: (-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%),
+  164: (-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%),
+  165: (-225deg, #FF057C 0%, #7C64D5 48%, #4CC3FF 100%),
+  166: (-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%),
+  167: (-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%),
+  168: (-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%)
+);
+
+$effect-blend: (
+  color-burn: color-burn,
+  color-dodge: color-dodge,
+  color: color,
+  darken: darken,
+  difference: difference,
+  exclusion: exclusion,
+  hard-light: hard-light,
+  hue: hue,
+  lighten: lighten,
+  luminosity: luminosity,
+  multiple: multiply,
+  normal: normal,
+  overlay: overlay,
+  saturation: saturation,
+  screen: screen,
+  soft-light: soft-light
+);
+
+$text-offset-shadow: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  7: 6px,
+  8: 8px,
+  9: 9px,
+  10: 10px,
+  11: 11px,
+  12: 12px
+);
+
+/* Filters */
+
+$filter-invert: (
+  0: 0,
+  1: 1.0
+);
+
+$filter-compose: (
+  0: 0,
+  1: 1,
+  2: 1.10,
+  3: 1.20,
+  4: 1.30,
+  5: 1.40,
+  6: 1.50,
+  7: 1.60,
+  8: 1.70,
+  9: 1.80,
+  10: 1.90
+);
+
+$filter-blur: (
+  0: 0px,
+  1: 2px,
+  2: 4px,
+  3: 6px,
+  4: 8px,
+  5: 10px,
+  6: 12px,
+  7: 14px,
+  8: 16px,
+  9: 18px,
+  10: 20px,
+  20: 40px,
+  30: 60px,
+  40: 80px,
+  50: 100px
+);
+
+$filter-drop-shadow: (
+  xs: 0px 0px 1px rgba(0, 0, 0, 0.8),
+  sm: 0px 1px 3px rgba(0, 0, 0, 0.5),
+  md: 0px 4px 3px rgba(0, 0, 0, 0.5),
+  lg: 0px 4px 6px rgba(0, 0, 0, 0.5),
+  xl: 0px 4px 10px rgba(0, 0, 0, 0.5)
+);
+
+$filter-hue-rotate: (
+  0: 0deg,
+  15: 15deg,
+  30: 30deg,
+  60: 60deg,
+  90: 90deg,
+  180: 180deg
+);
+
+$filter-hue-rotate-neg: (
+  0: -0deg,
+  15: -15deg,
+  30: -30deg,
+  60: -60deg,
+  90: -90deg,
+  180: -180deg
+);
+
+/* Flexbox */
+
+$align-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  stretch: stretch
+);
+
+$align-items: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch
+);
+
+$align-self: (
+  auto: auto,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+  baseline: baseline
+);
+
+$flex: ( // grow, shrink, basis
+  none: none,
+  zero: 1 1 0%,
+  auto: 1 1 auto,
+  initial: 0 1 auto,
+  full: 1 100%,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12
+);
+
+$flex-direction: (
+  row: row,
+  row-reverse: row-reverse,
+  column: column,
+  column-reverse: column-reverse
+);
+
+$flex-wrap: (
+  wrap: wrap,
+  wrap-reverse: wrap-reverse,
+  no-wrap: nowrap
+);
+
+$flex-gap: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem
+);
+
+$flex-grow: (
+  grow-0: 0,
+  grow-1: 1,
+  grow-2: 2,
+  grow-3: 3,
+  grow-4: 4,
+  grow-5: 5,
+  grow-6: 6
+);
+
+$flex-shrink: (
+  shrink-0: 0,
+  shrink-1: 1,
+  shrink-2: 2,
+  shrink-3: 3,
+  shrink-4: 4,
+  shrink-5: 5,
+  shrink-6: 6
+);
+
+$flex-basis: (
+  auto: auto,
+  fill: fill,
+  content: content,
+  max-content: max-content,
+  min-content: min-content,
+  fit-content: fit-content,
+  1: 0.25em,
+  2: 0.5em,
+  3: 0.75em,
+  4: 1em,
+  5: 1.25em,
+  6: 1.5em,
+  8: 2em,
+  10: 2.5em,
+  12: 3em,
+  16: 4em,
+  20: 5em,
+  24: 6em,
+  32: 8em,
+  40: 10em,
+  48: 12em,
+  56: 14em,
+  64: 16em,
+  72: 18em,
+  80: 20em,
+  88: 22em,
+  96: 24em,
+  104: 26em,
+  112: 28em
+);
+
+$justify-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
+
+$order: (
+  none: 0,
+  first: -9999,
+  last: 9999,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  11: 11,
+  12: 12
+);
+
+/* Fluids */
+
+// adjust the sentivity of thresholds for
+// screen size use in `fluid` utility modules.
+$minScreen: 20rem; // default: 20rem;
+$maxScreen: 50rem; // default: 50rem;
+
+$fluid-spacing: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem
+);
+
+/* Interactivity */
+
+$appearance: (
+  none: none
+);
+
+$outline-styles: (
+  none: none,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+  groove: groove,
+  inset: inset,
+  outset: outset,
+  ridge: ridge,
+  solid: solid
+);
+
+$outline-width: (
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem,
+);
+
+$outline-offset: (
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem,
+);
+
+$overscroll: (
+  auto: auto,
+  contain: contain,
+  none: none
+);
+
+$overscroll-x: (
+  x-none: none,
+  x-auto: auto,
+  x-contain: contain
+);
+
+$overscroll-y: (
+  y-none: none,
+  y-auto: auto,
+  y-contain: contain
+);
+
+$pointer-events: (
+  none: none,
+  auto: auto
+);
+
+$touch-action: (
+  none: none,
+  auto: auto,
+  pan-x: pan-x,
+  pan-y: pan-y,
+  pan-left: pan-left,
+  pan-right: pan-right,
+  pan-up: pan-up,
+  pan-down: pan-down,
+  pinch-zoom: pinch-zoom,
+  manipulation: manipulation
+);
+
+$user-select: (
+  none: none,
+  auto: auto,
+  all: all,
+  text: text
+);
+
+$resize: (
+  none: none,
+  x: horizontal,
+  y: vertical
+);
+
+$scroll-snap-type:
+  (x-mandatory, x mandatory),
+  (y-mandatory, y mandatory),
+  (x-proximity, x proximity),
+  (y-proximity, y proximity),
+  (block-mandatory, block mandatory),
+  (block-proximity, block proximity),
+  (inline-mandatory, inline mandatory),
+  (inline-proximity, inline proximity),
+  (both-mandatory, both mandatory),
+  (both-proximity, both proximity);
+
+$scroll-snap-align: (
+  none: none,
+  start: start,
+  center: center,
+  end: end
+);
+
+$cursor: (
+  auto: auto,
+  none: none,
+  default: default,
+  alias: alias,
+  cell: cell,
+  context-menu: context-menu,
+  copy: copy,
+  crosshair: crosshair,
+  help: help,
+  move: move,
+  pointer: pointer,
+  progress: progress,
+  text: text,
+  vertical-text: vertical-text,
+  wait: wait,
+  no-drop: no-drop,
+  not-allowed: not-allowed,
+  all-scroll: all-scroll,
+  col-resize: col-resize,
+  row-resize: row-resize,
+  n-resize: n-resize,
+  e-resize: e-resize,
+  s-resize: s-resize,
+  w-resize: w-resize,
+  ns-resize: ns-resize,
+  ew-resize: ew-resize,
+  ne-resize: ne-resize,
+  nw-resize: nw-resize,
+  se-resize: se-resize,
+  sw-resize: sw-resize,
+  nesw-resize: nesw-resize,
+  nwse-resize: nwse-resize
+);
+
+$scrollbar-size: (
+  xs: 4px,
+  sm: 8px,
+  md: 12px,
+  lg: 16px,
+  xl: 20px
+);
+
+/* Layouts */
+
+$ar-separator: '/';
+$aspect-ratio:
+  (1\/1, 1 #{$ar-separator} 1),
+  (1\/2, 1 #{$ar-separator} 2),
+  (2\/1, 2 #{$ar-separator} 1),
+  (4\/3, auto 4 #{$ar-separator} 3),
+  (16\/9, 16 #{$ar-separator} 9),
+  (21\/9, 21 #{$ar-separator} 9);
+
+$clear: (
+  none: none,
+  left: left,
+  right: right,
+  both: both
+);
+
+$object-fit: (
+  none: none,
+  contain: contain,
+  cover: cover,
+  fill: fill,
+  scale-down: scale-down
+);
+
+$object-position: (
+  top: top,
+  bottom: bottom,
+  center: center,
+  left: left,
+  left-bottom: left bottom,
+  left-top: left top,
+  right: right,
+  right-bottom: right bottom,
+  right-top: right top
+);
+
+$overflow: (
+  auto: auto,
+  hidden: hidden,
+  scroll: scroll
+);
+
+$overflow-xy: (
+  auto: auto,
+  hidden: hidden,
+  visible: visible,
+  scroll: scroll
+);
+
+$overflow-scrolling: (
+  auto: auto,
+  touch: touch
+);
+
+$inset: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem
+);
+
+$visibility:
+  (visible, visible),
+  (invisible, hidden);
+
+$z-index: (
+  auto: auto,
+  0: 0,
+  1: 10,
+  2: 20,
+  3: 30,
+  4: 40,
+  5: 50
+);
+
+$content-visibility:
+  (auto, auto, null),
+  (auto-widest, auto, 1000px),
+  (auto-wider, auto, 800px),
+  (auto-normal, auto, 600px),
+  (auto-tight, auto, 400px),
+  (auto-tighter, auto, 200px),
+  (hidden-widest, hidden, 1000px),
+  (hidden-wider, hidden, 800px),
+  (hidden-normal, hidden, 600px),
+  (hidden-tight, hidden, 400px),
+  (hidden-tighter, hidden, 200px);
+
+$display:
+  (block, block),
+  (hidden, none),
+  (inline, inline),
+  (inline-block, inline-block),
+  (flex, flex),
+  (inline-flex, inline-flex),
+  (table, table),
+  (table-caption, table-caption),
+  (table-cell, table-cell),
+  (table-row, table-row),
+  (table-row-group, table-row-group),
+  (table-column, table-column),
+  (table-column-group, table-column-group),
+  (table-header-group, table-header-group),
+  (table-footer-group, table-footer-group);
+
+$float: (
+  none: none,
+  left: left,
+  right: right
+);
+
+$position: (
+  static: static,
+  fixed: fixed,
+  absolute: absolute,
+  relative: relative,
+  sticky: sticky
+);
+
+/* Rendering */
+
+$image-rendering: (
+  auto: auto,
+  crisp: crisp-edges,
+  pixelated: pixelated
+);
+
+$text-rendering: (
+  auto: auto,
+  speed: optimizeSpeed,
+  legibility: optimizeLegibility,
+  precision: geometricPrecision
+);
+
+$clipping: (
+  0: 0%,
+  10: 10%,
+  20: 20%,
+  30: 30%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  80: 80%,
+  90: 90%,
+  100: 100%
+);
+
+$clipping-negative: (
+  0: -0%,
+  10: -10%,
+  20: -20%,
+  30: -30%,
+  40: -40%,
+  50: -50%,
+  60: -60%,
+  70: -70%,
+  80: -80%,
+  90: -90%,
+  100: -100%
+);
+
+/* Sizing */
+
+$height: (
+  auto: auto,
+  px: 1px,
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem,
+  '1#{$of}2': 50%,
+  '1#{$of}3': 33.333333%,
+  '2#{$of}3': 66.666667%,
+  '1#{$of}4': 25%,
+  '2#{$of}4': 50%,
+  '3#{$of}4': 75%,
+  '1#{$of}5': 20%,
+  '2#{$of}5': 40%,
+  '3#{$of}5': 60%,
+  '4#{$of}5': 80%,
+  '1#{$of}6': 16.666667%,
+  '2#{$of}6': 33.333333%,
+  '3#{$of}6': 50%,
+  '4#{$of}6': 66.666667%,
+  '5#{$of}6': 83.333333%,
+  '1#{$of}12': 8.333333%,
+  '2#{$of}12': 16.666667%,
+  '3#{$of}12': 25%,
+  '4#{$of}12': 33.333333%,
+  '5#{$of}12': 41.666667%,
+  '6#{$of}12': 50%,
+  '7#{$of}12': 58.333333%,
+  '8#{$of}12': 66.666667%,
+  '9#{$of}12': 75%,
+  '10#{$of}12': 83.333333%,
+  '11#{$of}12': 91.666667%,
+  full: 100%,
+  screen: 100vh
+);
+
+$width: (
+  auto: auto,
+  px: 1px,
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem,
+  '1#{$of}2': 50%,
+  '1#{$of}3': 33.333333%,
+  '2#{$of}3': 66.666667%,
+  '1#{$of}4': 25%,
+  '2#{$of}4': 50%,
+  '3#{$of}4': 75%,
+  '1#{$of}5': 20%,
+  '2#{$of}5': 40%,
+  '3#{$of}5': 60%,
+  '4#{$of}5': 80%,
+  '1#{$of}6': 16.666667%,
+  '2#{$of}6': 33.333333%,
+  '3#{$of}6': 50%,
+  '4#{$of}6': 66.666667%,
+  '5#{$of}6': 83.333333%,
+  '1#{$of}12': 8.333333%,
+  '2#{$of}12': 16.666667%,
+  '3#{$of}12': 25%,
+  '4#{$of}12': 33.333333%,
+  '5#{$of}12': 41.666667%,
+  '6#{$of}12': 50%,
+  '7#{$of}12': 58.333333%,
+  '8#{$of}12': 66.666667%,
+  '9#{$of}12': 75%,
+  '10#{$of}12': 83.333333%,
+  '11#{$of}12': 91.666667%,
+  full: 100%,
+  screen: 100vw
+);
+
+$max-height: (
+  full: 100%,
+  screen: 100vh
+);
+
+$max-width: (
+  none: none,
+  xs-3: 12rem,
+  xs-2: 16rem,
+  xs-1: 20rem,
+  sm: 24rem,
+  md: 28rem,
+  lg: 32rem,
+  xl-1: 36rem,
+  xl-2: 42rem,
+  xl-3: 48rem,
+  xl-4: 56rem,
+  xl-5: 64rem,
+  xl-6: 72rem,
+  full: 100%,
+  screen-sm: 640px,
+  screen-md: 768px,
+  screen-lg: 1024px,
+  screen-1k: 1280px,
+  screen-2k: 1920px,
+  screen-4k: 3840px,
+  screen-8k: 7680px
+);
+
+$min-height: (
+  0: 0,
+  full: 100%,
+  screen: 100vh
+);
+
+$min-width: (
+  0: 0,
+  full: 100%
+);
+
+$proportion-scale: (
+  none: none,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10
+);
+
+/* Spacing */
+
+$equal: (
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem
+);
+
+$spacing: (
+  auto: auto,
+  px: 1px,
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  72: 18rem,
+  80: 20rem,
+  88: 22rem,
+  96: 24rem,
+  104: 26rem,
+  112: 28rem
+);
+
+/* SVG */
+
+$stroke-linecap: (
+  butt: butt,
+  round: round,
+  square: square
+);
+
+$stroke-width: (
+  0: 0,
+  1: 1,
+  2: 2
+);
+
+/* Tables */
+
+$border-collapse: (
+  collapse: collapse,
+  separate: separate
+);
+
+$table-layout: (
+  auto: auto,
+  fixed: fixed
+);
+
+/* Transforms */
+
+$transform-degree: (
+  0: 0,
+  3: 3deg,
+  6: 6deg,
+  9: 9deg,
+  12: 12deg,
+  15: 15deg,
+  18: 18deg,
+  21: 21deg,
+  24: 24deg,
+  27: 27deg,
+  30: 30deg,
+  33: 33deg,
+  36: 36deg,
+  39: 39deg,
+  42: 42deg,
+  45: 45deg,
+  48: 48deg,
+  51: 51deg,
+  54: 54deg,
+  57: 57deg,
+  60: 60deg,
+  63: 63deg,
+  66: 66deg,
+  69: 69deg,
+  72: 72deg,
+  75: 75deg,
+  78: 78deg,
+  81: 81deg,
+  84: 84deg,
+  87: 87deg,
+  90: 90deg,
+  100: 100deg,
+  120: 120deg,
+  180: 180deg
+);
+
+$transform-perspective: (
+  none: none,
+  200: 200px,
+  300: 300px,
+  400: 400px,
+  500: 500px,
+  600: 600px,
+  700: 700px,
+  800: 800px,
+  900: 900px,
+  1000: 1000px
+);
+
+$scale: (
+  0: 0,
+  50: 0.5,
+  75: 0.75,
+  90: 0.9,
+  95: 0.95,
+  100: 1,
+  105: 1.05,
+  110: 1.1,
+  125: 1.25,
+  150: 1.5
+);
+
+$transform-origin: (
+  top: top,
+  top-right: top right,
+  top-left: top left,
+  center: center,
+  bottom-right: bottom right,
+  bottom: bottom,
+  bottom-left: bottom left,
+  left: left,
+  right: right
+);
+
+$translate: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+  32: 8rem,
+  40: 10rem,
+  48: 12rem,
+  56: 14rem,
+  64: 16rem,
+  px: 1px,
+  '1#{$of}2': 50%,
+  full: 100%
+);
+
+/* Transitions */
+
+$transition-duration: (
+  75: 75ms,
+  100: 100ms,
+  150: 150ms,
+  200: 200ms,
+  300: 300ms,
+  500: 500ms,
+  700: 700ms,
+  1000: 1000ms
+);
+
+$transition-property: (
+  none: none,
+  colors: (background-color, border-color, color, fill, stroke),
+  opacity: opacity,
+  shadow: box-shadow,
+  transform: transform
+);
+
+$transition-timing: (
+  linear: linear,
+  in: cubic-bezier(0.4, 0, 1, 1),
+  out: cubic-bezier(0, 0, 0.2, 1),
+  in-out: cubic-bezier(0.4, 0, 0.2, 1)
+);
+
+/* Typography */
+
+$sans: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;
+
+$font-family: (
+  // Browser Fonts
+  default: (-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Helvetica Neue, sans-serif),
+  sans: (#{$sans}),
+  serif: (Noto Serif, Droid Serif, Georgia, Cambria, Times New Roman, Times, serif),
+  mono: (SF Mono, Consolas, Roboto Mono, Noto Mono, Droid Mono, Fira Mono, Ubuntu Mono, Oxygen Mono, Lucida Console, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace),
+  arabic: (Arabic UI Display, Geeza Pro, Simplified Arabic, #{$sans}),
+  japanese: (Meiryo, Yu Gothic, Hiragino Kaku Gothic Pro, Hiragino Sans, #{$sans}),
+  korean: (Malgun Gothic, Apple SD Gothic Neo, #{$sans}),
+  thai: (Leelawadee, Thonburi, #{$sans}),
+  chinese: (Microsoft Yahei, PingFang SC, PingFang TC, Hiragino Sans, Hiragino Kaku Gothic Pro, #{$sans})
+);
+
+$font-size: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  md: 1rem,
+  lg: 1.125rem,
+  xl-1: 1.25rem,
+  xl-2: 1.5rem,
+  xl-3: 1.875rem,
+  xl-4: 2.25rem,
+  xl-5: 3rem,
+  xl-6: 4rem,
+  xl-7: 5rem,
+  xl-8: 6rem
+);
+
+$font-smoothing:
+  (antialiased, antialiased),
+  (grayscale, grayscale),
+  (subpixel, subpixel-antialiased);
+
+$font-style: (
+  italic: italic,
+  not-italic: normal
+);
+
+$font-weight: (
+  hairline: 100,
+  thin: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+);
+
+$letter-spacing: (
+  tight-2: -0.05em,
+  tight-1: -0.025em,
+  normal: 0,
+  wide-1: 0.025em,
+  wide-2: 0.05em,
+  wide-3: 0.1em
+);
+
+$line-height: (
+  none: 1,
+  tight-2: 1.25,
+  tight-1: 1.375,
+  normal: 1.5,
+  loose-1: 1.625,
+  loose-2: 2,
+  loose-3: 0.75rem,
+  loose-4: 1rem,
+  loose-5: 1.25rem,
+  loose-6: 1.5rem,
+  loose-7: 1.75rem,
+  loose-8: 2rem,
+  loose-9: 2.25rem,
+  loose-10: 2.5rem
+);
+
+$list-style: (
+  inside: inside,
+  outside: outside
+);
+
+$list-style-type: (
+  none: none,
+  disc: disc,
+  decimal: decimal
+);
+
+$text-align: (
+  left: left,
+  right: right,
+  center: center,
+  justify: justify
+);
+
+$special-colors: (
+  white: #ffffff,
+  transparent: transparent,
+  current: currentColor
+);
+
+// color palettes
+$color-shades-legacy:
+  (amber, 1, #ffbf00),
+  (amber, 2, #dba400),
+  (amber, 3, #b68900),
+  (amber, 4, #926d00),
+  (amber, 5, #6d5200),
+
+  (charcoal, 1, #36454f),
+  (charcoal, 2, #2e3b44),
+  (charcoal, 3, #263138),
+  (charcoal, 4, #1f272d),
+  (charcoal, 5, #171d22),
+
+  (copper, 1, #b87333),
+  (copper, 2, #9e632b),
+  (copper, 3, #845224),
+  (copper, 4, #69421d),
+  (copper, 5, #4f3116),
+
+  (granite, 1, #5f5f5f),
+  (granite, 2, #545454),
+  (granite, 3, #494949),
+  (granite, 4, #3f3f3f),
+  (granite, 5, #343434),
+
+  (indigo, 1, #4b0082),
+  (indigo, 2, #450076),
+  (indigo, 3, #3c0067),
+  (indigo, 4, #340058),
+  (indigo, 5, #2b004a),
+
+  (blue, 1, #0008ff),
+  (blue, 2, #0007cc),
+  (blue, 3, #000599),
+  (blue, 4, #000366),
+  (blue, 5, #000233),
+
+  (lava, 1, #cf1020),
+  (lava, 2, #ba0e1c),
+  (lava, 3, #a20c19),
+  (lava, 4, #8b0a15),
+  (lava, 5, #740912),
+
+  (lime, 1, #32da0d),
+  (lime, 2, #2dc10b),
+  (lime, 3, #27a90a),
+  (lime, 4, #219108),
+  (lime, 5, #1c7807),
+
+  (teal, 1, #008080),
+  (teal, 2, #007171),
+  (teal, 3, #006363),
+  (teal, 4, #005555),
+  (teal, 5, #004747),
+
+  (tangerine, 1, #f28500),
+  (tangerine, 2, #da7800),
+  (tangerine, 3, #be6900),
+  (tangerine, 4, #a35a00),
+  (tangerine, 5, #884b00),
+
+  (violet, 1, #9500ff),
+  (violet, 2, #8400e3),
+  (violet, 3, #7400c6),
+  (violet, 4, #6300aa),
+  (violet, 5, #53008e),
+
+  (onyx, 1, #353839),
+  (onyx, 2, #303334),
+  (onyx, 3, #2a2d2d),
+  (onyx, 4, #242627),
+  (onyx, 5, #1e2020);
+
+$color-tones-legacy:
+  (amber, 1, #edb612),
+  (amber, 2, #dbad25),
+  (amber, 3, #c9a437),
+  (amber, 4, #b69b49),
+  (amber, 5, #a4925b),
+
+  (charcoal, 1, #414d56),
+  (charcoal, 2, #4b565d),
+  (charcoal, 3, #565e64),
+  (charcoal, 4, #60676b),
+  (charcoal, 5, #6b6f72),
+
+  (copper, 1, #b0753e),
+  (copper, 2, #a87749),
+  (copper, 3, #a07954),
+  (copper, 4, #987a5f),
+  (copper, 5, #907c6a),
+
+  (granite, 1, #636363),
+  (granite, 2, #666666),
+  (granite, 3, #6a6a6a),
+  (granite, 4, #6e6e6e),
+  (granite, 5, #717171),
+
+  (indigo, 1, #510e82),
+  (indigo, 2, #571c82),
+  (indigo, 3, #5d2b81),
+  (indigo, 4, #633981),
+  (indigo, 5, #684781),
+
+  (blue, 1, #151cea),
+  (blue, 2, #2b30d5),
+  (blue, 3, #4044c0),
+  (blue, 4, #5558aa),
+  (blue, 5, #6b6c95),
+
+  (lava, 1, #c61c2b),
+  (lava, 2, #bd2935),
+  (lava, 3, #b53540),
+  (lava, 4, #ac424b),
+  (lava, 5, #a34e55),
+
+  (lime, 1, #12c112),
+  (lime, 2, #25b625),
+  (lime, 3, #37ab37),
+  (lime, 4, #49a149),
+  (lime, 5, #5b965b),
+
+  (teal, 1, #128080),
+  (teal, 2, #258080),
+  (teal, 3, #378080),
+  (teal, 4, #498080),
+  (teal, 5, #5b8080),
+
+  (tangerine, 1, #e28412),
+  (tangerine, 2, #d18425),
+  (tangerine, 3, #c18337),
+  (tangerine, 4, #b18249),
+  (tangerine, 5, #a1815b),
+
+  (violet, 1, #9215ea),
+  (violet, 2, #8e2bd5),
+  (violet, 3, #8b40c0),
+  (violet, 4, #8755aa),
+  (violet, 5, #846b95),
+
+  (onyx, 1, #424445),
+  (onyx, 2, #4e5051),
+  (onyx, 3, #5b5c5d),
+  (onyx, 4, #676868),
+  (onyx, 5, #747474);
+
+$color-tints-legacy:
+  (amber, 1, #ffc824),
+  (amber, 2, #ffd149),
+  (amber, 3, #ffdb6d),
+  (amber, 4, #ffe492),
+  (amber, 5, #ffedb6),
+
+  (charcoal, 1, #4c616f),
+  (charcoal, 2, #617d8f),
+  (charcoal, 3, #7f97a8),
+  (charcoal, 4, #9fb1bd),
+  (charcoal, 5, #bfcbd3),
+
+  (copper, 1, #cc8746),
+  (copper, 2, #d59b65),
+  (copper, 3, #ddaf83),
+  (copper, 4, #e6c3a2),
+  (copper, 5, #eed7c1),
+
+  (granite, 1, #707070),
+  (granite, 2, #828282),
+  (granite, 3, #949494),
+  (granite, 4, #a6a6a6),
+  (granite, 5, #b8b8b8),
+
+  (indigo, 1, #6600af),
+  (indigo, 2, #7e00d8),
+  (indigo, 3, #9603ff),
+  (indigo, 4, #a82dff),
+  (indigo, 5, #b957ff),
+
+  (blue, 1, #2b32ff),
+  (blue, 2, #555bff),
+  (blue, 3, #8084ff),
+  (blue, 4, #aaadff),
+  (blue, 5, #d5d6ff),
+
+  (lava, 1, #ed1325),
+  (lava, 2, #ef3040),
+  (lava, 3, #f24e5c),
+  (lava, 4, #f46b77),
+  (lava, 5, #f68992),
+
+  (lime, 1, #3cf113),
+  (lime, 2, #54f331),
+  (lime, 3, #6df54e),
+  (lime, 4, #85f66c),
+  (lime, 5, #9ef889),
+
+  (teal, 1, #00b6b6),
+  (teal, 2, #00eded),
+  (teal, 3, #24ffff),
+  (teal, 4, #5bffff),
+  (teal, 5, #92ffff),
+
+  (tangerine, 1, #ff991c),
+  (tangerine, 2, #ffaa42),
+  (tangerine, 3, #ffbb67),
+  (tangerine, 4, #ffcc8d),
+  (tangerine, 5, #ffddb3),
+
+  (violet, 1, #a62bff),
+  (violet, 2, #b855ff),
+  (violet, 3, #ca80ff),
+  (violet, 4, #dcaaff),
+  (violet, 5, #edd5ff),
+
+  (onyx, 1, #565b5d),
+  (onyx, 2, #767d7f),
+  (onyx, 3, #989ea0),
+  (onyx, 4, #babebf),
+  (onyx, 5, #dddfdf);
+
+$color-shades: (
+  amber (
+    1: #ffbf00,
+    2: #dba400,
+    3: #b68900,
+    4: #926d00,
+    5: #6d5200
+  ),
+  charcoal (
+    1: #36454f,
+    2: #2e3b44,
+    3: #263138,
+    4: #1f272d,
+    5: #171d22
+  ),
+  copper (
+    1: #b87333,
+    2: #9e632b,
+    3: #845224,
+    4: #69421d,
+    5: #4f3116
+  ),
+  granite (
+    1: #5f5f5f,
+    2: #545454,
+    3: #494949,
+    4: #3f3f3f,
+    5: #343434
+  ),
+  indigo (
+    1: #4b0082,
+    2: #450076,
+    3: #3c0067,
+    4: #340058,
+    5: #2b004a
+  ),
+  blue (
+    1: #0008ff,
+    2: #0007cc,
+    3: #000599,
+    4: #000366,
+    5: #000233,
+  ),
+  lava (
+    1: #cf1020,
+    2: #ba0e1c,
+    3: #a20c19,
+    4: #8b0a15,
+    5: #740912
+  ),
+  lime (
+    1: #32da0d,
+    2: #2dc10b,
+    3: #27a90a,
+    4: #219108,
+    5: #1c7807
+  ),
+  teal (
+    1: #008080,
+    2: #007171,
+    3: #006363,
+    4: #005555,
+    5: #004747
+  ),
+  tangerine (
+    1: #f28500,
+    2: #da7800,
+    3: #be6900,
+    4: #a35a00,
+    5: #884b00
+  ),
+  violet (
+    1: #9500ff,
+    2: #8400e3,
+    3: #7400c6,
+    4: #6300aa,
+    5: #53008e
+  ),
+  onyx (
+    1: #353839,
+    2: #303334,
+    3: #2a2d2d,
+    4: #242627,
+    5: #1e2020
+  )
+);
+
+$color-tones: (
+  amber (
+    1: #edb612,
+    2: #dbad25,
+    3: #c9a437,
+    4: #b69b49,
+    5: #a4925b
+  ),
+  charcoal (
+    1: #414d56,
+    2: #4b565d,
+    3: #565e64,
+    4: #60676b,
+    5: #6b6f72
+  ),
+  copper (
+    1: #b0753e,
+    2: #a87749,
+    3: #a07954,
+    4: #987a5f,
+    5: #907c6a
+  ),
+  granite (
+    1: #636363,
+    2: #666666,
+    3: #6a6a6a,
+    4: #6e6e6e,
+    5: #717171
+  ),
+  indigo (
+    1: #510e82,
+    2: #571c82,
+    3: #5d2b81,
+    4: #633981,
+    5: #684781
+  ),
+  blue (
+    1: #151cea,
+    2: #2b30d5,
+    3: #4044c0,
+    4: #5558aa,
+    5: #6b6c95,
+  ),
+  lava (
+    1: #c61c2b,
+    2: #bd2935,
+    3: #b53540,
+    4: #ac424b,
+    5: #a34e55
+  ),
+  lime (
+    1: #12c112,
+    2: #25b625,
+    3: #37ab37,
+    4: #49a149,
+    5: #5b965b
+  ),
+  teal (
+    1: #128080,
+    2: #258080,
+    3: #378080,
+    4: #498080,
+    5: #5b8080
+  ),
+  tangerine (
+    1: #e28412,
+    2: #d18425,
+    3: #c18337,
+    4: #b18249,
+    5: #a1815b
+  ),
+  violet (
+    1: #9215ea,
+    2: #8e2bd5,
+    3: #8b40c0,
+    4: #8755aa,
+    5: #846b95
+  ),
+  onyx (
+    1: #424445,
+    2: #4e5051,
+    3: #5b5c5d,
+    4: #676868,
+    5: #747474
+  )
+);
+
+$color-tints: (
+  amber (
+    1: #ffc824,
+    2: #ffd149,
+    3: #ffdb6d,
+    4: #ffe492,
+    5: #ffedb6
+  ),
+  charcoal (
+    1: #4c616f,
+    2: #617d8f,
+    3: #7f97a8,
+    4: #9fb1bd,
+    5: #bfcbd3
+  ),
+  copper (
+    1: #cc8746,
+    2: #d59b65,
+    3: #ddaf83,
+    4: #e6c3a2,
+    5: #eed7c1
+  ),
+  granite (
+    1: #707070,
+    2: #828282,
+    3: #949494,
+    4: #a6a6a6,
+    5: #b8b8b8
+  ),
+  indigo (
+    1: #6600af,
+    2: #7e00d8,
+    3: #9603ff,
+    4: #a82dff,
+    5: #b957ff
+  ),
+  blue (
+    1: #2b32ff,
+    2: #555bff,
+    3: #8084ff,
+    4: #aaadff,
+    5: #d5d6ff,
+  ),
+  lava (
+    1: #ed1325,
+    2: #ef3040,
+    3: #f24e5c,
+    4: #f46b77,
+    5: #f68992
+  ),
+  lime (
+    1: #3cf113,
+    2: #54f331,
+    3: #6df54e,
+    4: #85f66c,
+    5: #9ef889
+  ),
+  teal (
+    1: #00b6b6,
+    2: #00eded,
+    3: #24ffff,
+    4: #5bffff,
+    5: #92ffff
+  ),
+  tangerine (
+    1: #ff991c,
+    2: #ffaa42,
+    3: #ffbb67,
+    4: #ffcc8d,
+    5: #ffddb3
+  ),
+  violet (
+    1: #a62bff,
+    2: #b855ff,
+    3: #ca80ff,
+    4: #dcaaff,
+    5: #edd5ff
+  ),
+  onyx (
+    1: #565b5d,
+    2: #767d7f,
+    3: #989ea0,
+    4: #babebf,
+    5: #dddfdf
+  )
+);
+
+$vertical-align: (
+  baseline: baseline,
+  top: top,
+  middle: middle,
+  bottom: bottom,
+  text-top: text-top,
+  text-bottom: text-bottom
+);
+
+$whitespace: (
+  normal: normal,
+  no-wrap: nowrap,
+  pre: pre,
+  pre-line: pre-line,
+  pre-wrap: pre-wrap
+);
+
+$writing-mode: (
+  horizontal: horizontal-tb,
+  vertical-left: vertical-lr,
+  vertical-right: vertical-rl
+);
+
+$text-transform:
+  (uppercase, uppercase),
+  (lowercase, lowercase),
+  (capitalize, capitalize),
+  (normal-case, none);
+
+$text-decoration: (
+  no-deco: none,
+  underline: underline,
+  line-through: line-through
+);
+
+$text-underline-thickness: (
+  1: 0.2em,
+  2: 0.3em,
+  3: 0.4em,
+  4: 0.5em,
+  5: 0.6em
+);
+
+$text-underline-offset: (
+  1: 0.1em,
+  2: 0.2em,
+  3: 0.3em,
+  4: 0.4em,
+  5: 0.5em
+);
+
+$text-clamp: (
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5
+);
+
+$text-glyphs: (
+  normal: normal,
+  diagonal-fractions: diagonal-fractions,
+  lining-nums: lining-nums,
+  oldstyle-nums: oldstyle-nums,
+  ordinal: ordinal,
+  proportional-nums: proportional-nums,
+  slashed-zero: slashed-zero,
+  stacked-fractions: stacked-fractions,
+  tabular-nums: tabular-nums
+);
+
+$counter:
+  (upper-alpha, upper-alpha),
+  (lower-alpha, lower-alpha),
+  (upper-roman, upper-roman),
+  (lower-roman, lower-roman),
+  (number, number);
+
+$text-stroke: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  8: 8px,
+  9: 9px,
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  20: 20px,
+  24: 24px,
+  28: 28px,
+  32: 32px,
+  36: 36px,
+  40: 40px
+);
+
+$column-count: (
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6
+);
+
+$column-size: (
+  12: 12em,
+  14: 14em,
+  16: 16em,
+  18: 18em,
+  20: 20em,
+  22: 22em,
+  24: 24em,
+  26: 26em,
+  28: 28em
+);
+
+$column-fill: (
+  auto: auto,
+  balance: balance
+);
+
+$column-gap: (
+  2: 2em,
+  3: 3em,
+  4: 4em,
+  5: 5em,
+  6: 6em,
+  7: 7em,
+  8: 8em
+);
+
+$column-bar-width: (
+  2: 2px,
+  4: 4px,
+  6: 6px,
+  8: 8px,
+  10: 10px
+);
+
+$column-bar-style: (
+  none: none,
+  dotted: dotted,
+  dashed: dashed,
+  solid: solid
+);

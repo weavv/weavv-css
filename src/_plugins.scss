@@ -1,0 +1,57 @@
+/**
+ * @file: _plugins.scss
+ */
+
+// enable or disable plugins
+$plugins: (
+  'component-name': false,
+);
+
+/**
+  * Plugin API (See _core.scss, _helpers.scss)
+  * @param: {String}  $id  See `configs/_options.scss`
+  * @param: {String}  $classname
+  * @param: {String}  $property
+  * @param: {List}    $modifier [()]
+  * @param: {List}    $variant [()]
+  * @param: {Bool}    $negative [true|false]
+  * @param: {String}  $replace [null]
+  * @param: {String}  $override  See `configs/_options.scss`
+  *
+  * USAGE
+  */
+
+$custom-colors: (
+  amber: (
+    '1': #262626,
+    '2': #252525,
+  ),
+);
+
+@if (map-get($plugins, 'component-name')) {
+  @include utility(
+    $classname: 'text',
+    $property: color,
+    $modifier: $custom-colors,
+    $negative: false,
+    //  $replace: '',
+    $variant: (
+      'responsive',
+      'dark-mode', 'light-mode',
+      'reduce-motion',
+      'selection-hover',
+      'expand',
+      'first-of-type', 'last-of-type',
+      'portrait', 'landscape',
+      'hover', 'group-hover',
+      'focus', 'group-focus', 'focus-visible', 'focus-within',
+      'active',
+      'visited',
+      'checked',
+      'disabled'
+    )
+  );
+}
+
+
+

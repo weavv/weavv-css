@@ -1,0 +1,89 @@
+/**
+ * @file: modules/utilities/_flexbox.scss
+ */
+
+// Utilities for controls how flex items grow and shrink.
+@if (map-get($flexbox, 'flex')) {
+  @include utility($classname: 'flex', $property: flex, $modifier: $flex, $variant: $v-flex);
+}
+
+// Utilities for controls how lines are positioned in multi-line flex containers.
+@if (map-get($flexbox, 'align-content')) {
+  @include utility($classname: 'content', $property: align-content, $modifier: $align-content, $variant: $v-flex-align-content);
+}
+
+// Utilities for sets flex items position along a container's cross axis.
+@if (map-get($flexbox, 'align-items')) {
+  @include utility($classname: 'items', $property: align-items, $modifier: $align-items, $variant: $v-flex-align-items);
+}
+
+// Utilities for controls how an individual flex item is positioned along container's cross axis.
+@if (map-get($flexbox, 'align-self')) {
+  @include utility($classname: 'self', $property: align-self, $modifier: $align-self, $variant: $v-flex-align-self);
+}
+
+// Utilities for sets direction of flex items.
+@if (map-get($flexbox, 'direction')) {
+  @include utility($classname: 'flex', $property: flex-direction, $modifier: $flex-direction, $variant: $v-flex-direction);
+}
+
+// Utilities for set inner spacing in between the flex child elements.
+@if (map-get($flexbox, 'gap')) {
+  @include variant($v-flex-gap) using ($props...) {
+    #{$id}flex-gap {
+      @include pseudo($flex-gap, $props...) using ($value){
+        margin: calc(-1 * #{$value}) 0 0 calc(-1 * #{$value});
+      }
+    }
+    @each $modifier, $mode in $flex-gap {
+      $TRASH-flexgap: '.trashflexgaptoberemoved';
+      #{$id}flex-gap-#{$modifier}#{$TRASH-flexgap} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          margin: #{$mode} 0 0 #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for controls how flex items grow.
+@if (map-get($flexbox, 'grow')) {
+  @include utility($classname: 'flex', $property: flex-grow, $modifier: $flex-grow, $variant: $v-flex-grow);
+}
+
+// Utilities for controls how flex items shrink.
+@if (map-get($flexbox, 'shrink')) {
+  @include utility($classname: 'flex', $property: flex-shrink, $modifier: $flex-shrink, $variant: $v-flex-shrink);
+}
+
+// Utilities for creates how flex items wrap.
+@if (map-get($flexbox, 'wrap')) {
+  @include utility($classname: 'flex', $property: flex-wrap, $modifier: $flex-wrap, $variant: $v-flex-wrap);
+}
+
+// Utilities to specify the initial size of the flex element before any free space is distributed based on flex factors.
+@if (map-get($flexbox, 'basis')) {
+  @include utility($classname: 'flex-basis', $property: flex-basis, $modifier: $flex-basis, $variant: $v-flex-basis);
+}
+
+// Utilities for controls how flex items are positioned along container's main axis.
+@if (map-get($flexbox, 'justify-content')) {
+  @include utility($classname: 'justify', $property: justify-content, $modifier: $justify-content, $variant: $v-flex-justify-content);
+}
+
+// Utilities for controls how flex items are ordered.
+@if (map-get($flexbox, 'order')) {
+  @include utility($classname: 'order', $property: order, $modifier: $order, $variant: $v-flex-order);
+}
+
+// Utilities for controls how flex items are centered vertically and horizontally.
+@if (map-get($flexbox, 'flex-center')) {
+  @include variant($v-flex-center) using ($props...) {
+    #{$id}flex-center {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        justify-content: center #{$override};
+        align-items: center #{$override};
+      }
+    }
+  }
+}

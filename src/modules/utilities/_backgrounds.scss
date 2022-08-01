@@ -1,0 +1,203 @@
+/**
+ * @file: modules/utilities/_backgrounds.scss
+ */
+
+// Utilities for sets behaviour of background images when scrolling.
+@if (map-get($backgrounds, 'attachment')) {
+  @include utility($classname: 'bg', $property: background-attachment, $modifier: $background-attachment);
+}
+
+// Utilities for sets the blending mode of each background layer (color or image).
+@if (map-get($backgrounds, 'blend')) {
+  @include utility($classname: 'bg-blend', $property: background-blend-mode, $modifier: $background-blend-mode, $variant: $v-bg-blend);
+}
+
+// Utilities for sets background border to an element with flexible control over the border spacing, size, angle and length.
+@if (map-get($backgrounds, 'border')) {
+  @include variant($v-bg-border) using ($props...) {
+    #{$id}bg-border {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        background-image:
+          repeating-linear-gradient(
+            var(--bg-border-angle-left),
+            currentColor,
+            currentColor var(--bg-border-length),
+            transparent var(--bg-border-length),
+            transparent var(--bg-border-space),
+            currentColor var(--bg-border-space)
+          ),
+          repeating-linear-gradient(
+            var(--bg-border-angle-top),
+            currentColor,
+            currentColor var(--bg-border-length),
+            transparent var(--bg-border-length),
+            transparent var(--bg-border-space),
+            currentColor var(--bg-border-space)
+          ),
+          repeating-linear-gradient(
+            var(--bg-border-angle-right),
+            currentColor,
+            currentColor var(--bg-border-length),
+            transparent var(--bg-border-length),
+            transparent var(--bg-border-space),
+            currentColor var(--bg-border-space)
+          ),
+          repeating-linear-gradient(
+            var(--bg-border-angle-bottom),
+            currentColor,
+            currentColor var(--bg-border-length),
+            transparent var(--bg-border-length),
+            transparent var(--bg-border-space),
+            currentColor var(--bg-border-space)
+          ) #{$override};
+        background-size:
+          var(--bg-border-size) 100%,
+          100% var(--bg-border-size),
+          var(--bg-border-size) 100%,
+          100% var(--bg-border-size) #{$override};
+        background-position: 0 0, 0 0, 100% 0, 0 100% #{$override};
+        background-repeat: no-repeat #{$override};
+      }
+    }
+  }
+  @include variant(()) using ($props...) {
+    #{$id}bg-border.angle {
+      @include pseudo($background-border-angle, $props...) using ($value) {
+        --bg-border-angle-left: #{$value};
+        --bg-border-angle-top: #{$value};
+        --bg-border-angle-right: #{$value};
+        --bg-border-angle-bottom: #{$value};
+      }
+    }
+    #{$id}bg-border.-angle { // -- negative
+      @include pseudo($background-border-angle, $props...) using ($value) {
+        --bg-border-angle-left: -#{$value};
+        --bg-border-angle-top: -#{$value};
+        --bg-border-angle-right: -#{$value};
+        --bg-border-angle-bottom: -#{$value};
+      }
+    }
+  }
+  @include utility($classname: 'bg-border.length', $property: --bg-border-length, $modifier: $background-border-length);
+  @include utility($classname: 'bg-border.space', $property: --bg-border-space, $modifier: $background-border-space);
+  @include utility($classname: 'bg-border.size', $property: --bg-border-size, $modifier: $background-border-size);
+}
+
+// Utilities for sets background color
+// -- white, black, currentColor
+@if (map-get($backgrounds, 'color', 'shade')) {
+  @include utility($classname: 'bg', $property: background-color, $modifier: $special-colors, $variant: $v-bg-color);
+  // -- palettes
+  @include variant($v-bg-color) using ($props...) {
+    #{$id}bg-shade {
+      @include pseudo($color-shades, $props...) using ($value) {
+        --bg-opacity: 1;
+        background-color: rgba($value, var(--bg-opacity)) #{$override};
+      }
+    }
+  }
+}
+@if (map-get($backgrounds, 'color', 'tone')) {
+  @include variant($v-bg-color) using ($props...) {
+    #{$id}bg-tone {
+      @include pseudo($color-tones, $props...) using ($value) {
+        --bg-opacity: 1;
+        background-color: rgba($value, var(--bg-opacity)) #{$override};
+      }
+    }
+  }
+}
+@if (map-get($backgrounds, 'color', 'tint')) {
+  @include variant($v-bg-color) using ($props...) {
+    #{$id}bg-tint {
+      @include pseudo($color-tints, $props...) using ($value) {
+        --bg-opacity: 1;
+        background-color: rgba($value, var(--bg-opacity)) #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets the background gradient color to an element with flexible control over color, color space and angles.
+@if (map-get($backgrounds, 'gradient')) {
+  @include variant($v-bg-gradient) using ($props...) {
+    #{$id}bg-gradient {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        background: linear-gradient(var(--bg-gradient-angle), var(--bg-gradient-start-color) var(--bg-gradient-primary), var(--bg-gradient-stop-color) var(--bg-gradient-secondary)) #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'bg-gradient.start-shade', $property: --bg-gradient-start-color, $modifier: $color-shades);
+  @include utility($classname: 'bg-gradient.start-tone', $property: --bg-gradient-start-color, $modifier: $color-tones);
+  @include utility($classname: 'bg-gradient.start-tint', $property: --bg-gradient-start-color, $modifier: $color-tints);
+  @include utility($classname: 'bg-gradient.start', $property: --bg-gradient-primary, $modifier: $background-gradient-space);
+  @include utility($classname: 'bg-gradient.stop-shade', $property: --bg-gradient-stop-color, $modifier: $color-shades);
+  @include utility($classname: 'bg-gradient.stop-tone', $property: --bg-gradient-stop-color, $modifier: $color-tones);
+  @include utility($classname: 'bg-gradient.stop-tint', $property: --bg-gradient-stop-color, $modifier: $color-tints);
+  @include utility($classname: 'bg-gradient.stop', $property: --bg-gradient-secondary, $modifier: $background-gradient-space);
+  @include utility($classname: 'bg-gradient.angle', $property: --bg-gradient-angle, $modifier: $background-gradient-angle);
+  @include variant(()) using ($props...) { // -- negative
+    #{$id}bg-gradient.-angle {
+      @include pseudo($background-gradient-angle, $props...) using ($value) {
+        --bg-gradient-angle: -#{$value};
+      }
+    }
+  }
+  // helpers: clip text
+  @include variant(()) using ($props...) {
+    #{$id}bg-gradient.clip-text {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        -moz-background-clip: text #{$override};
+        -moz-text-fill-color: transparent #{$override};
+        -webkit-background-clip: text #{$override};
+        -webkit-text-fill-color: transparent #{$override};
+        background-clip: text #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets opacity of background color.
+@if (map-get($backgrounds, 'opacity')) {
+  @include utility($classname: 'bg-opacity', $property: --bg-opacity, $modifier: $opacity, $variant: $v-bg-opacity);
+}
+
+// Utilities for sets position of a background image.
+@if (map-get($backgrounds, 'position')) {
+  @include utility($classname: 'bg', $property: background-position, $modifier: $background-position);
+}
+
+// Utilities for sets repetition of a background image.
+@if (map-get($backgrounds, 'repeat')) {
+  @include utility($classname: 'bg', $property: background-repeat, $modifier: $background-repeat);
+}
+
+// Utilities for sets background size of a background image.
+@if (map-get($backgrounds, 'size')) {
+  @include utility($classname: 'bg', $property: background-size, $modifier: $background-size);
+}
+
+// Utilities for sets the background gradient preset diagonally to an element.
+@if (map-get($backgrounds, 'gradient-preset')) {
+  @include variant($v-bg-gradient-preset) using ($props...) {
+    #{$id}bg-gradient-preset {
+      @include pseudo($bg-gradient-presets, $props...) using ($value) {
+        background-image: linear-gradient(#{$value}) #{$override};
+      }
+    }
+  }
+  // helper: clip text
+  @include variant(()) using ($props...) {
+    @each $name, $value in $bg-gradient-presets {
+      #{$id}bg-gradient-preset-#{$name}.clip-text {
+        @include pseudo((null : null), $props..., $modifier: false) using ($value: null) {
+          -moz-background-clip: text #{$override};
+          -moz-text-fill-color: transparent #{$override};
+          -webkit-background-clip: text #{$override};
+          -webkit-text-fill-color: transparent #{$override};
+          background-clip: text #{$override};
+        }
+      }
+    }
+  }
+}

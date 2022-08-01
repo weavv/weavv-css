@@ -1,0 +1,25 @@
+/**
+ * @file: modules/utilities/_transitions.scss
+ */
+
+// Utilities for sets the css properties affected by transition animations.
+@if (map-get($transitions, 'transition')) {
+  @include variant($v-transition) using ($props...) {
+    #{$id}transition {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        transition-property: all #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'transition', $property: transition-property, $modifier: $transition-property);
+
+  // Utilities for sets the length of time for a transition animations to complete.
+  @if (map-get($transitions, 'duration')) {
+    @include utility($classname: 'duration', $property: transition-duration, $modifier: $transition-duration);
+  }
+
+  // Utilities for sets the easing function of transition animations.
+  @if (map-get($transitions, 'timing')) {
+    @include utility($classname: 'ease', $property: transition-timing-function, $modifier: $transition-timing);
+  }
+}

@@ -1,0 +1,35 @@
+/**
+ * @file: modules/utilities/_svg.scss
+ */
+
+// Utilities for sets the color to paint an SVG.
+@if (map-get($svg, 'fill-current')) {
+  @include variant(()) using ($props...) {
+    #{$id}fill-current {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        fill: currentColor #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets the outline color of an SVG.
+@if (map-get($svg, 'stroke-current')) {
+  @include variant(()) using ($props...) {
+    #{$id}stroke-current {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        stroke: currentColor #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets the outline shape of an SVG.
+@if (map-get($svg, 'stroke-linecap')) {
+  @include utility($classname: 'stroke', $property: stroke-linecap, $modifier: $stroke-linecap);
+}
+
+// Utilities for sets the outline width of an SVG.
+@if (map-get($svg, 'stroke-width')) {
+  @include utility($classname: 'stroke', $property: stroke-width, $modifier: $stroke-width);
+}

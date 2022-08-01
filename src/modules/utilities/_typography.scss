@@ -1,0 +1,589 @@
+/**
+ * @file: modules/utilities/_typography.scss
+ */
+
+// Utilities for sets the font family.
+@if (map-get($typography, 'font-family')) {
+  @include utility($classname: 'font', $property: font-family, $modifier: $font-family);
+}
+
+// Utilities for sets the font size.
+@if (map-get($typography, 'font-size')) {
+  @include utility($classname: 'text', $property: font-size, $modifier: $font-size, $variant: $v-font-size);
+}
+
+// Utilities for sets the anti-aliasing of the font.
+@if (map-get($typography, 'font-smoothing')) {
+  @include variant(()) using ($props...) {
+    @each $modifier, $mode in $font-smoothing {
+      #{$id}#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          -moz-osx-font-smoothing: #{$mode} #{$override};
+          -webkit-font-smoothing: #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets the style of the font.
+@if (map-get($typography, 'font-style')) {
+  @include utility($classname: 'text', $property: font-style, $modifier: $font-style);
+}
+
+// Utilities for sets the font weight.
+@if (map-get($typography, 'font-weight')) {
+  @include utility($classname: 'font', $property: font-weight, $modifier: $font-weight, $variant: $v-font-weight);
+}
+
+// Utilities for sets the spacing between letters.
+@if (map-get($typography, 'letter-spacing')) {
+  @include utility($classname: 'gap', $property: letter-spacing, $modifier: $letter-spacing, $variant: $v-letter-spacing);
+}
+
+// Utilities for sets the line height.
+@if (map-get($typography, 'line-height')) {
+  @include utility($classname: 'depth', $property: line-height, $modifier: $line-height, $variant: $v-line-height);
+}
+
+// Utilities for sets the position of a list's bullets.
+@if (map-get($typography, 'list-style-position')) {
+  @include utility($classname: 'list', $property: list-style-position, $modifier: $list-style);
+}
+
+// Utilities for sets the bullet style of a list.
+@if (map-get($typography, 'list-style-type')) {
+  @include utility($classname: 'list', $property: list-style-type, $modifier: $list-style-type);
+}
+
+// Utilities for sets the placeholder color using the ::placeholder pseudo element.
+@if (map-get($typography, 'placeholder-color', 'shade')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-shades-legacy {
+      #{$id}placeholder-shade-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+  // Utilities sets the placeholder color transparent to overwrite native browser color.
+  @include variant($v-placeholder-color) using ($props...) {
+    #{$id}placeholder-transparent::placeholder {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        color: transparent #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'placeholder-color', 'tone')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tones-legacy {
+      #{$id}placeholder-tone-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+}
+@if (map-get($typography, 'placeholder-color', 'tint')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tints-legacy {
+      #{$id}placeholder-tint-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets the alignment of text.
+@if (map-get($typography, 'text-align')) {
+  @include utility($classname: 'text', $property: text-align, $modifier: $text-align, $variant: $v-text-align);
+}
+
+// Utilities for sets the text color.
+@if (map-get($typography, 'text-color', 'shade')) {
+  // -- white, transparent, currentColor
+  @include utility($classname: 'text', $property: color, $modifier: $special-colors, $variant: $v-text-color);
+  @include utility($classname: 'text-shade', $property: color, $modifier: $color-shades, $variant: $v-text-color);
+}
+@if (map-get($typography, 'text-color', 'tone')) {
+  @include utility($classname: 'text-tone', $property: color, $modifier: $color-tones, $variant: $v-text-color);
+}
+@if (map-get($typography, 'text-color', 'tint')) {
+  @include utility($classname: 'text-tint', $property: color, $modifier: $color-tints, $variant: $v-text-color);
+}
+
+// Utilities for sets total display text line to an element.
+@if (map-get($typography, 'text-clamp')) {
+  @include variant(()) using ($props...) {
+    #{$id}text-clamp {
+      @include pseudo($text-clamp, $props...) using ($value) {
+        -webkit-box-orient: vertical #{$override};
+        -webkit-line-clamp: #{$value} #{$override};
+        display: -webkit-box #{$override};
+        overflow: hidden #{$override};
+        position: relative #{$override};
+        text-overflow: ellipsis #{$override};
+        visibility: visible #{$override};
+        word-wrap: break-word #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets the text-decoration of an element.
+@if (map-get($typography, 'text-decoration')) {
+  @include utility($classname: 'text', $property: text-decoration, $modifier: $text-decoration, $variant: $v-text-decoration);
+  // -- options
+  @include utility($classname: 'line-thickness', $property: text-decoration-thickness, $modifier: $text-underline-thickness);
+  @include utility($classname: 'line-offset', $property: text-underline-offset, $modifier: $text-underline-offset);
+}
+
+// Utilities for sets the capitalization of text.
+@if (map-get($typography, 'text-transform')) {
+  @include utility($classname: 'text', $property: text-transform, $modifier: $text-transform, $variant: $v-text-transform);
+}
+
+// Utilities for sets the vertical alignment of an inline or table-cell box.
+@if (map-get($typography, 'text-align')) {
+  @include utility($classname: 'align', $property: vertical-align, $modifier: $vertical-align, $variant: $v-vertical-align);
+}
+
+// Utilities for sets the whitespace of an element.
+@if (map-get($typography, 'whitespace')) {
+  @include utility($classname: 'whitespace', $property: white-space, $modifier: $whitespace);
+}
+
+// Utilities for sets the word breaks of an element.
+@if (map-get($typography, 'word-break')) {
+  @include variant($v-word-break) using ($props...) {
+    #{$id}break-normal {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        overflow-wrap: normal #{$override};
+        word-break: normal #{$override};
+      }
+    }
+    #{$id}break-words {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        overflow-wrap: break-word #{$override};
+      }
+    }
+    #{$id}break-all {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        word-break: break-all #{$override};
+      }
+    }
+    #{$id}truncate {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        overflow: hidden #{$override};
+        text-overflow: ellipsis #{$override};
+        white-space: nowrap #{$override}
+      }
+    }
+  }
+}
+
+// Utilities for sets alignment of the text horizontally, vertically, or which direction depending on the language.
+@if (map-get($typography, 'writing-mode')) {
+  @include utility($classname: 'text', $property: writing-mode, $modifier: $writing-mode);
+}
+
+// Utilities for sets alternate glyphs for numbers, fractions, and ordinal markers to an element.
+@if (map-get($typography, 'glyphs')) {
+  @include utility($classname: 'glyphs', $property: font-variant-numeric, $modifier: $text-glyphs, $variant: $v-text-glyphs);
+}
+
+// Utilities for sets automatically counter to an element can be grouped separately with a counter reset option.
+@if (map-get($typography, 'counter')) {
+  @include variant(()) using ($props...) {
+    #{$id}counter-reset {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        counter-reset: lists, mini-step #{$override};
+      }
+    }
+    #{$id}counter {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        counter-increment: lists #{$override};
+      }
+    }
+    @each $modifier, $mode in $counter {
+      #{$id}counter.#{$modifier}:before {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          content: counter(lists, #{$mode}) #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for set text with outer stroke width.
+@if (map-get($typography, 'text-stroke')) {
+  @include utility($classname: 'text-stroke', $property: -webkit-text-stroke, $modifier: $text-stroke, $variant: $v-text-stroke);
+}
+
+// Utilities for set text with outer stroke color.
+@if (map-get($typography, 'text-stroke-color', 'shade')) {
+  @include utility($classname: 'text-stroke', $property: -webkit-text-stroke-color, $modifier: $special-colors, $variant: $v-text-stroke-color);
+  // -- palettes
+  @include utility($classname: 'text-stroke-shade', $property: -webkit-text-stroke-color, $modifier: $color-shades, $variant: $v-text-stroke-color);
+}
+@if (map-get($typography, 'text-stroke-color', 'tone')) {
+  @include utility($classname: 'text-stroke-tone', $property: -webkit-text-stroke-color, $modifier: $color-tones, $variant: $v-text-stroke-color);
+
+}
+@if (map-get($typography, 'text-stroke-color', 'tint')) {
+  @include utility($classname: 'text-stroke-tint', $property: -webkit-text-stroke-color, $modifier: $color-tints, $variant: $v-text-stroke-color);
+}
+
+// Utilities for set text type with Google Fonts.
+@if (map-get($typography, 'google-fonts', 'alegreya')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Alegreya', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-alegreya {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Alegreya', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'alegreya-sans')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Alegreya+San', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-alegreya-sans {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Alegreya Sans', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'archivo-narrow')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Archivo+Narrow', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-archivo-narrow {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Archivo Narrow', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'biorhyme')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'BioRhyme', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-biorhyme {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'BioRhyme', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'cardo')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Cardo', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-cardo {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Cardo', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'chivo')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Chivo', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-chivo {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Chivo', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'inconsolata')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Inconsolata', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-inconsolata {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Inconsolata', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'inknut-antiqua')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Inknut+Antiqua', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-inknut-antiqua {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Inknut Antiqua', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'karla')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Karla', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-karla {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Karla', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'lato')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Lato', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-lato {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Lato', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'libre-baskerville')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Libre+Baskerville', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-libre-baskerville {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Libre Baskerville', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'lora')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Lora', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-lora {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Lora', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'manrope')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Manrope', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-manrope {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Manrope', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'merriweather')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Merriweather', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-merriweather {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Merriweather', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'montserrat')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Montserrat', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-montserrat {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Montserrat', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'neuton')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Neuton', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-neuton {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Neuton', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'open-sans')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Open+Sans', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-open-sans {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Open Sans', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'pt-sans')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'PT+Sans', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-pt-sans {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'PT Sans', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'pt-serif')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'PT+Serif', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-pt-serif {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'PT Serif', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'playfair-display')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Playfair+Display', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-playfair-display {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Playfair Display', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'poppins')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Poppins', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-poppins {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Poppins', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'proza-libre')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Proza+Libre', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-proza-libre {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Proza Libre', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'raleway')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Raleway', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-raleway {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Raleway', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'roboto')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Roboto', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-roboto {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Roboto', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'roboto-slab')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Roboto+Slab', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-roboto-slab {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Roboto Slab', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'rubik')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Rubik', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-rubik {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Rubik', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'source-sans-pro')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Source+Sans+Pro', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-source-sans-pro {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Source Sans Pro', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'source-serif-pro')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Source+Serif+Pro', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-source-serif-pro {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Source Serif Pro', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'spectral')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Spectral', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-spectral {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Spectral', sans-serif #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for set the multiple paragraphs text into columns to adjust and balance automatically allowing the content to flow naturally.
+@if (map-get($typography, 'column')) {
+  @include variant($v-column) using ($props...) {
+    #{$id}column {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --column-count: auto;
+        --column-width: auto;
+        --column-fill: auto;
+        --column-gap: normal;
+        --column-rule-width: 1px;
+        --column-rule-style: none;
+        --column-rule-color: black;
+        column-count: var(--column-count);
+        column-width: var(--column-width);
+        column-fill: var(--column-fill);
+        column-gap: var(--column-gap);
+        column-rule-width: var(--column-rule-width);
+        column-rule-style: var(--column-rule-style);
+        column-rule-color: var(--column-rule-color);
+      }
+    }
+  }
+  @include utility ($classname: 'column.count', $property: --column-count, $modifier: $column-count);
+  @include utility ($classname: 'column.size', $property: --column-width, $modifier: $column-size);
+  @include utility ($classname: 'column.fill', $property: --column-fill, $modifier: $column-fill);
+  @include utility ($classname: 'column.gap', $property: --column-gap, $modifier: $column-gap);
+  @include utility ($classname: 'column.bar', $property: --column-rule-style, $modifier: $column-bar-style);
+  @include utility ($classname: 'column.bar-size', $property: --column-rule-width, $modifier: $column-bar-width);
+}
+@if (map-get($typography, 'column-color', 'shade')) {
+  @include variant(()) using ($props...) {
+    #{$id}column.bar-shade {
+      @include pseudo($color-shades, $props...) using ($value) {
+        --column-rule-color: #{$value} #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'column-color', 'tone')) {
+  @include variant(()) using ($props...) {
+    #{$id}column.bar-tone{
+      @include pseudo($color-tones, $props...) using ($value) {
+        --column-rule-color: #{$value} #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'column-color', 'tint')) {
+  @include variant(()) using ($props...) {
+    #{$id}column.bar-tint{
+      @include pseudo($color-tints, $props...) using ($value) {
+        --column-rule-color: #{$value} #{$override};
+      }
+    }
+  }
+}

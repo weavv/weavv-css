@@ -1,0 +1,33 @@
+/**
+ * @file: modules/utilities/_theme.scss
+ */
+
+// Utilities for sets page theme either dark or light based on web browser or app settings with color correction.
+@if (map-get($themes, 'auto-dark-mode')) {
+  @media (prefers-color-scheme: dark) {
+    html[theme="auto"],
+    img[theme="auto"],
+    [theme="auto"] {
+      filter: invert(1) hue-rotate(180deg) #{$override};
+    }
+  }
+}
+
+@if (map-get($themes, 'auto-light-mode')) {
+  @media (prefers-color-scheme: light) {
+    html[theme="auto"],
+    img[theme="auto"],
+    [theme="auto"] {
+      filter: invert(0) hue-rotate(0deg) #{$override};
+    }
+  }
+}
+
+// Utilities for sets page theme either dark or light by applying force invert with color correction.
+@if (map-get($themes, 'force-light-dark-mode')) {
+  html[theme="invert"],
+  img[theme="invert"],
+  [theme="invert"] {
+    filter: invert(1) hue-rotate(180deg) #{$override};
+  }
+}

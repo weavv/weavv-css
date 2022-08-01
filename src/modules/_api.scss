@@ -1,0 +1,164 @@
+/**
+ * @file: modules/_api.scss
+ */
+
+/**
+  * Plugin API (See _core.scss, _helpers.scss)
+  * @param: {String}  $id  See `configs/_optional.scss`
+  * @param: {String}  $classname
+  * @param: {String}  $property
+  * @param: {List}    $modifier [()]
+  * @param: {List}    $variant [()]
+  * @param: {Bool}    $negative [true|false]
+  * @param: {String}  $replace [null]
+  * @param: {String}  $override  See `configs/_optional.scss`
+  *
+  * USAGE
+  *
+  * $gray: (
+  *  '1': #262626,
+  *  '2': #252525,
+  *    ...
+  * );
+  *
+  * $colors: (
+  *   amber: (
+  *    '1': #262626,
+  *    '2': #252525,
+  *    ...
+  *   ),
+  *   ...
+  * );
+  *
+  * @include utility(
+  *   $classname: 'text',
+  *   $property: color,
+  *   $modifier: $colors,
+  *   $negative: boolean [true|false],
+  *   $replace: '',
+  *   $variant: (
+  *     'responsive',
+  *     'dark-mode', 'light-mode',
+  *     'reduce-motion',
+  *     'selection-hover',
+  *     'expand',
+  *     'first-of-type',
+  *     'last-of-type',
+  *     'portrait', 'landscape',
+  *     'hover', 'group-hover',
+  *     'focus', 'group-focus', 'focus-visible', 'focus-within',
+  *     'active',
+  *     'visited',
+  *     'checked',
+  *     'disabled'
+  *   )
+  * );
+  */
+@mixin utility(
+  $id: $id,
+  $classname: null,
+  $property,
+  $modifier,
+  $variant: (),
+  $negative: null,
+  $replace: null,
+  $override: $override
+) {
+  @include variant($variant) using ($props...) {
+    @if $negative == true { // negative value
+      -#{$id}#{$classname} {
+        @include pseudo($modifier, $props..., $replace: $replace) using ($value) {
+          #{$property}: -$value #{$override};
+        }
+      }
+    }
+    @else { // (default)
+      #{$id}#{$classname} {
+        @include pseudo($modifier, $props..., $replace: $replace) using ($value) {
+          #{$property}: $value #{$override};
+        }
+      }
+    }
+  }
+}
+
+
+/**
+ * Keyframe API
+ * @param: {String}  $modifier
+ * @param: {List}    $variant [()]
+ */
+@mixin keyframe($modifier: null, $variant: ()) {
+  @each $animation-name, $from-prop1, $from-value1, $from-prop2, $from-value2, $to-prop1, $to-value1, $to-prop2, $to-value2 in $modifier {
+
+    @keyframes #{$animation-name} {
+      from { #{$from-prop1}: #{$from-value1}; #{$from-prop2}: #{$from-value2} }
+      to { #{$to-prop1}: #{$to-value1}; #{$to-prop2}: #{$to-value2} }
+    }
+
+    @include variant($variant) using ($props...) {
+      #{$id}#{$animation-name} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          animation-name: #{$animation-name}
+        }
+      }
+    }
+  }
+}
+
+
+/**
+  * Fluids API
+  * @param: {String}  $properties
+  * @param: {Number}  $min-vw
+  * @param: {Number}  $max-vw
+  * @param: {Number}  $min-value
+  * @param: {Number}  $max-value
+  */
+@mixin fluid(
+  $cssProperty: null,
+  $minVW: null, $maxVW: null,
+  $minValue: null, $maxValue: null
+) {
+  & {
+    @each $property in $cssProperty {
+      #{$property}: $minValue
+    }
+    @media screen and (min-width: $minVW) {
+      @each $property in $cssProperty {
+        #{$property}: calc(#{$minValue} + #{strip-unit($maxValue - $minValue)} * ((100vw - #{$minVW}) / #{strip-unit($maxVW - $minVW)}))
+      }
+    }
+    @media screen and (min-width: $maxVW) {
+      @each $property in $cssProperty {
+        #{$property}: $maxValue
+      }
+    }
+  }
+}
+
+
+/**
+ * Google Fonts API
+ * @param: {Map}  $googlefonts-maps
+ *
+ * USAGE
+ *
+ * @include google-fonts(
+ *   (
+ *     font: 'Roboto',
+ *     weight: '100;200;300'
+ *   ),
+ *   ...
+ * );
+ */
+@mixin google-fonts($googlefonts-maps...) {
+  @each $settings in $googlefonts-maps {
+
+    $types: map-get($settings, "font");
+    $weights: map-get($settings, "weight");
+
+    @import url('https://fonts.googleapis.com/css2?family=#{$types}&:wght@#{$weights}&display=swap');
+
+  }
+}

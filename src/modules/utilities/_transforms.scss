@@ -1,0 +1,97 @@
+/**
+ * @file: modules/utilities/_transforms.scss
+ */
+
+// Utilities for translate an element that has transform applied.
+@if (map-get($transforms, 'translate')) {
+  @include utility($classname: 'translate-x', $property: --transform-translate-x, $modifier: $translate, $variant: $v-transform-translate);
+  @include utility($classname: 'translate-x', $property: --transform-translate-x, $modifier: $translate, $negative: true, $variant: $v-transform-translate);
+  @include utility($classname: 'translate-y', $property: --transform-translate-y, $modifier: $translate, $variant: $v-transform-translate);
+  @include utility($classname: 'translate-y', $property: --transform-translate-y, $modifier: $translate, $negative: true, $variant: $v-transform-translate);
+  @include utility($classname: 'translate-z', $property: --transform-translate-z, $modifier: $translate, $variant: $v-transform-translate);
+  @include utility($classname: 'translate-z', $property: --transform-translate-z, $modifier: $translate, $negative: true, $variant: $v-transform-translate);
+}
+
+// Utilities for sets the origin of an element's transforms.
+@if (map-get($transforms, 'transform')) {
+  @include variant(()) using ($props...) {
+    #{$id}transform {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --transform-rotate: 0;
+        --transform-rotate-x: 0;
+        --transform-rotate-y: 0;
+        --transform-rotate-z: 0;
+        --transform-scale-x: 1;
+        --transform-scale-y: 1;
+        --transform-scale-z: 1;
+        --transform-skew-x: 0;
+        --transform-skew-y: 0;
+        --transform-translate-x: 0;
+        --transform-translate-y: 0;
+        --transform-translate-z: 0;
+        transform:
+          rotate(var(--transform-rotate))
+          rotateX(var(--transform-rotate-x))
+          rotateY(var(--transform-rotate-y))
+          rotateZ(var(--transform-rotate-z))
+          scaleX(var(--transform-scale-x))
+          scaleY(var(--transform-scale-y))
+          scaleZ(var(--transform-scale-z))
+          skewX(var(--transform-skew-x))
+          skewY(var(--transform-skew-y))
+          translateX(var(--transform-translate-x))
+          translateY(var(--transform-translate-y))
+          translateZ(var(--transform-translate-z)) #{$override};
+        transform-style: preserve-3d;
+      }
+    }
+    #{$id}transform-none {
+      transform: none #{$override}
+    }
+  }
+
+  // Utilities for sets the origin of an element's transforms.
+  @if (map-get($transforms, 'origin')) {
+    @include utility($classname: 'origin', $property: transform-origin, $modifier: $transform-origin, $variant: $v-transform-origin);
+  }
+
+  // Utilities for set an element a 3D-space by affecting the distance between the Z plane and the user.
+  @if (map-get($transforms, 'perspective')) {
+    @include utility($classname: 'transform-perspective', $property: perspective, $modifier: $transform-perspective);
+  }
+
+  // Utilities for scales an element that has transform applied.
+  @if (map-get($transforms, 'scale')) {
+    @include variant($v-transform-scale) using ($props...) {
+      #{$id}scale {
+        @include pseudo($scale, $props...) using ($value) {
+          --transform-scale-x: #{$value};
+          --transform-scale-y: #{$value};
+        }
+      }
+    }
+    @include utility($classname: 'scale-x', $property: --transform-scale-x, $modifier: $scale, $variant: $v-transform-scale);
+    @include utility($classname: 'scale-y', $property: --transform-scale-y, $modifier: $scale, $variant: $v-transform-scale);
+    @include utility($classname: 'scale-z', $property: --transform-scale-z, $modifier: $scale, $variant: $v-transform-scale);
+  }
+
+  // Utilities for rotates an element that has transform applied.
+  @if (map-get($transforms, 'rotate')) {
+    @include utility($classname: 'rotate', $property: --transform-rotate, $modifier: $transform-degree, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate', $property: --transform-rotate, $modifier: $transform-degree, $negative: true, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-x', $property: --transform-rotate-x, $modifier: $transform-degree, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-x', $property: --transform-rotate-x, $modifier: $transform-degree, $negative: true, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-y', $property: --transform-rotate-y, $modifier: $transform-degree, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-y', $property: --transform-rotate-y, $modifier: $transform-degree, $negative: true, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-z', $property: --transform-rotate-z, $modifier: $transform-degree, $variant: $v-transform-rotate);
+    @include utility($classname: 'rotate-z', $property: --transform-rotate-z, $modifier: $transform-degree, $negative: true, $variant: $v-transform-rotate);
+  }
+
+  // Utilities for skews an element that has transform applied.
+  @if (map-get($transforms, 'skew')) {
+    @include utility($classname: 'skew-x', $property: --transform-skew-x, $modifier: $transform-degree, $variant: $v-transform-skew);
+    @include utility($classname: 'skew-x', $property: --transform-skew-x, $modifier: $transform-degree, $negative: true, $variant: $v-transform-skew);
+    @include utility($classname: 'skew-y', $property: --transform-skew-y, $modifier: $transform-degree, $variant: $v-transform-skew);
+    @include utility($classname: 'skew-y', $property: --transform-skew-y, $modifier: $transform-degree, $negative: true, $variant: $v-transform-skew);
+  }
+}

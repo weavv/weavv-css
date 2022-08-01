@@ -1,0 +1,117 @@
+/**
+ * @file: modules/utilities/_effects.scss
+ */
+
+// Utilities for sets the box-shadow property attaches one or more shadows to an element.
+@if (map-get($effects, 'box-shadow')) {
+  @include variant($v-shadow-solid) using ($props...) {
+    #{$id}shadow {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        box-shadow:
+          0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06) #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'shadow', $property: box-shadow, $modifier: $box-shadow, $variant: $v-shadow-solid);
+  @include utility($classname: 'shadow', $property: box-shadow, $modifier: $box-shadow-dreamy, $variant: $v-shadow-dreamy);
+}
+
+// Utilities for sets the shadow color to an element.
+@if (map-get($effects, 'box-shadow-color', 'shade')) {
+  @include variant($v-shadow-size-color) using ($props...) {
+    @each $size, $radius in $shadow-size {
+      #{$id}shadow-#{$size}-shade {
+        @include pseudo($color-shades, $props...) using ($value) {
+          box-shadow: 0 0 #{$radius} #{$value} #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($effects, 'box-shadow-color', 'tone')) {
+  @include variant($v-shadow-size-color) using ($props...) {
+    @each $size, $radius in $shadow-size {
+      #{$id}shadow-#{$size}-tone {
+        @include pseudo($color-tones, $props...) using ($value) {
+          box-shadow: 0 0 #{$radius} #{$value} #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($effects, 'box-shadow-color', 'tint')) {
+  @include variant($v-shadow-size-color) using ($props...) {
+    @each $size, $radius in $shadow-size {
+      #{$id}shadow-#{$size}-tint {
+        @include pseudo($color-tints, $props...) using ($value) {
+          box-shadow: 0 0 #{$radius} #{$value} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets the transparency of an element.
+@if (map-get($effects, 'opacity')) {
+  @include utility($classname: 'opacity', $property: opacity, $modifier: $opacity, $variant: $v-opacity);
+}
+
+// Utilities for sets how an element's content should blend with its direct parent background.
+@if (map-get($effects, 'blend')) {
+  @include utility($classname: 'blend', $property: mix-blend-mode, $modifier: $effect-blend, $variant: $v-mix-blend);
+}
+
+// Utilities for sets text shadow with offset x or y coordinates, offset blur and offset color to an element
+@if (map-get($effects, 'text-offset-shadow')) {
+  @include variant($v-text-offset-shadow) using ($props...) {
+    #{$id}text-offset-shadow {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --text-offset-shadow-x: 0px;
+        --text-offset-shadow-y: 0px;
+        --text-offset-shadow-blur: 0px;
+        --text-offset-shadow-color: rgba(0, 0, 0, 0.5);
+        text-shadow:
+          var(--text-offset-shadow-x)
+          var(--text-offset-shadow-y)
+          var(--text-offset-shadow-blur)
+          var(--text-offset-shadow-color) #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'text-offset-shadow.offset-x', $property: --text-offset-shadow-x, $modifier: $text-offset-shadow);
+  @include utility($classname: 'text-offset-shadow.offset-y', $property: --text-offset-shadow-y, $modifier: $text-offset-shadow);
+  @include utility($classname: 'text-offset-shadow.offset-blur', $property: --text-offset-shadow-blur, $modifier: $text-offset-shadow);
+  @include utility($classname: 'text-offset-shadow.offset-shade', $property: --text-offset-shadow-color, $modifier: $color-shades);
+  @include utility($classname: 'text-offset-shadow.offset-tone', $property: --text-offset-shadow-color, $modifier: $color-tones);
+  @include utility($classname: 'text-offset-shadow.offset-tint', $property: --text-offset-shadow-color, $modifier: $color-tints);
+}
+
+// Utilities for sets text shadow with multiple stepping glowing shadow colors to an element.
+@if (map-get($effects, 'text-neon-shadow', 'shade')) {
+  @include variant($v-text-neon-shadow) using ($props...) {
+    #{$id}text-neon-shadow {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --text-neon-shadow-start-color: rgba(36, 36, 36, 0.5);
+        --text-neon-shadow-stop-color: rgba(75, 75, 75, 0.5);
+        text-shadow:
+          0 0 7px var(--text-neon-shadow-start-color),
+          0 0 10px var(--text-neon-shadow-start-color),
+          0 0 21px var(--text-neon-shadow-start-color),
+          0 0 42px var(--text-neon-shadow-stop-color),
+          0 0 82px var(--text-neon-shadow-stop-color),
+          0 0 92px var(--text-neon-shadow-stop-color) #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'text-neon-shadow.start-shade', $property: --text-neon-shadow-start-color, $modifier: $color-shades);
+  @include utility($classname: 'text-neon-shadow.stop-shade', $property: --text-neon-shadow-stop-color, $modifier: $color-shades);
+}
+@if (map-get($effects, 'text-neon-shadow', 'tone')) {
+  @include utility($classname: 'text-neon-shadow.start-tone', $property: --text-neon-shadow-start-color, $modifier: $color-tones);
+  @include utility($classname: 'text-neon-shadow.stop-tone', $property: --text-neon-shadow-stop-color, $modifier: $color-tones);
+}
+@if (map-get($effects, 'text-neon-shadow', 'tint')) {
+  @include utility($classname: 'text-neon-shadow.start-tint', $property: --text-neon-shadow-start-color, $modifier: $color-tints);
+  @include utility($classname: 'text-neon-shadow.stop-tint', $property: --text-neon-shadow-stop-color, $modifier: $color-tints);
+}

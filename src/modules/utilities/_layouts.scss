@@ -1,0 +1,166 @@
+/**
+ * @file: modules/utilities/_layouts.scss
+ */
+
+// Utilities for set whether an element is moved below preceding floated elements.
+@if (map-get($layouts, 'clear')) {
+  @include utility($classname: 'clear', $property: clear, $modifier: $clear, $variant: $v-clear);
+}
+
+// Utilities for sets skip rendering if element is off-screen to improve overall page rendering speed.
+@if (map-get($layouts, 'render')) {
+  @include variant(()) using ($props...) {
+    @each $visibility, $valueA, $valueB in $content-visibility {
+      #{$id}render-#{$visibility} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          contain-intrinic-size: #{$valueB} #{$override};
+          content-visibility: #{$valueA} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets the display box type of an element.
+@if (map-get($layouts, 'display')) {
+  @include variant($v-display) using ($props...) {
+    @each $modifer, $mode in $display {
+      #{$id}#{$modifer} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          display: #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets an element's placement to a side of its container and allows content to wrap around it.
+@if (map-get($layouts, 'float')) {
+  @include utility($classname: 'float', $property: float, $modifier: $float);
+  @include variant(()) using ($props...) {
+    #{$id}clearfix::after {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        clear: both #{$override};
+        content: "" #{$override};
+        display: table #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets the placement of a positioned element.
+@if (map-get($layouts, 'top-bottom-left-right')) {
+  @include variant($v-inset) using ($props...) {
+    #{$id}inset {
+      @include pseudo($inset, $props...) using ($value) {
+        top: #{$value} #{$override};
+        bottom: #{$value} #{$override};
+        left: #{$value} #{$override};
+        right: #{$value} #{$override};
+      }
+    }
+    -#{$id}inset {
+      @include pseudo($inset, $props...) using ($value) {
+        top: -#{$value} #{$override};
+        bottom: -#{$value} #{$override};
+        left: -#{$value} #{$override};
+        right: -#{$value} #{$override};
+      }
+    }
+    #{$id}inset-x {
+      @include pseudo($inset, $props...) using ($value) {
+        left: #{$value} #{$override};
+        right: #{$value} #{$override};
+      }
+    }
+    -#{$id}inset-x {
+      @include pseudo($inset, $props...) using ($value) {
+        left: -#{$value} #{$override};
+        right: -#{$value} #{$override};
+      }
+    }
+    #{$id}inset-y {
+      @include pseudo($inset, $props...) using ($value) {
+        top: #{$value} #{$override};
+        bottom: #{$value} #{$override};
+      }
+    }
+    -#{$id}inset-y {
+      @include pseudo($inset, $props...) using ($value) {
+        top: -#{$value} #{$override};
+        bottom: -#{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'top', $property: top, $modifier: $inset, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'top', $property: top, $modifier: $inset, $negative: true, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'bottom', $property: bottom, $modifier: $inset, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'bottom', $property: bottom, $modifier: $inset, $negative: true, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'left', $property: left, $modifier: $inset, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'left', $property: left, $modifier: $inset, $negative: true, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'right', $property: right, $modifier: $inset, $variant: $v-top-bottom-left-right);
+  @include utility($classname: 'right', $property: right, $modifier: $inset, $negative: true, $variant: $v-top-bottom-left-right);
+}
+
+// Utilities for sets how the content of a replaced element (img or video tag) should be resized.
+@if (map-get($layouts, 'object-fit')) {
+  @include utility($classname: 'object', $property: object-fit, $modifier: $object-fit, $variant: $v-object-fit);
+}
+
+// Utilities for sets the alignment of the selected replaced element.
+@if (map-get($layouts, 'object-position')) {
+  @include utility($classname: 'object', $property: object-position, $modifier: $object-position, $variant: $v-object-position);
+}
+
+// Utilities for sets how to handle content that's too big for it's container.
+@if (map-get($layouts, 'overflow')) {
+  @include utility($classname: 'overflow', $property: overflow, $modifier: $overflow, $variant: $v-overflow);
+  @include utility($classname: 'overflow-x', $property: overflow-x, $modifier: $overflow-xy, $variant: $v-overflow);
+  @include utility($classname: 'overflow-y', $property: overflow-y, $modifier: $overflow-xy, $variant: $v-overflow);
+  @include utility($classname: 'scrolling', $property: -webkit-overflow-scrolling, $modifier: $overflow-scrolling, $variant: $v-overflow-scrolling);
+}
+
+// Utilities for sets an element's position.
+@if (map-get($layouts, 'position')) {
+  @include variant($v-position) using ($props...) {
+    @each $modifier, $mode in $position {
+      #{$id}#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          position: #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for show or hide without affecting the layout of the document.
+@if (map-get($layouts, 'visibility')) {
+  @include variant($v-visibility) using ($props...) {
+    @each $modifier, $mode in $visibility {
+      #{$id}#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          visibility: #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets the z order (stack order) of a positioned element.
+@if (map-get($layouts, 'z-index')) {
+  @include utility($classname: 'stack', $property: z-index, $modifier: $z-index, $variant: $v-z-index);
+}
+
+// Utilities for set dimension of aspect ratio to an element.
+@if (map-get($layouts, 'aspect-ratio')) {
+  @include variant($v-aspect-ratio) using ($props...) {
+    @each $modifier, $mode in $aspect-ratio {
+      #{$id}aspect-ratio-#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          aspect-ratio: #{$mode} #{$override};
+        }
+      }
+    }
+  }
+}
+

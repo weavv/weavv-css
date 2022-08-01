@@ -1,0 +1,94 @@
+/**
+ * @file: modules/utilities/_filters.scss
+ */
+
+// Utilities for sets brightness, contrast, saturate, drop shadow and blur filters to an element.
+@if (map-get($filters, 'filter')) {
+  @include variant(()) using ($props...) {
+    $filter-params: "brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturate)) blur(var(--blur)) drop-shadow(var(--drop-shadow)) hue-rotate(var(--hue-rotate))";
+    #{$id}filter {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null){
+        --blur: 0px;
+        --brightness: 1;
+        --contrast: 1;
+        --drop-shadow: 0px 0px 0px rgba(0, 0, 0, 0.0);
+        --extra-smooth: 0ms;
+        --hue-rotate: 0deg;
+        --saturate: 1;
+        filter: #{$filter-params} #{$override};
+        transition:
+          filter var(--extra-smooth) linear,
+          transform var(--extra-smooth) linear #{$override};
+      }
+    }
+  }
+
+  @if (map-get($filters, 'blur')) {
+    @include utility($classname: 'filter.blur', $property: --blur, $modifier: $filter-blur, $variant: $v-filter);
+  }
+  @if (map-get($filters, 'brightness')) {
+    @include utility($classname: 'filter.brightness', $property: --brightness, $modifier: $filter-compose, $variant: $v-filter);
+  }
+  @if (map-get($filters, 'contrast')) {
+    @include utility($classname: 'filter.contrast', $property: --contrast, $modifier: $filter-compose, $variant: $v-filter);
+  }
+  @if (map-get($filters, 'drop-shadow')) {
+    @include utility($classname: 'filter.drop-shadow', $property: --drop-shadow, $modifier: $filter-drop-shadow, $variant: $v-filter);
+  }
+  @if (map-get($filters, 'saturate')) {
+    @include utility($classname: 'filter.saturate', $property: --saturate, $modifier: $filter-compose, $variant: $v-filter);
+  }
+  @if (map-get($filters, 'hue-rotate')) {
+    @include utility($classname: 'filter.hue-rotate', $property: --hue-rotate, $modifier: $filter-hue-rotate, $variant: $v-filter);
+    @include utility($classname: 'filter.-hue-rotate', $property: --hue-rotate, $modifier: $filter-hue-rotate-neg, $variant: $v-filter);
+  }
+}
+
+// Utilities for sets filter utilities on-hover animation speed when selection-hover variant applied.
+@if (map-get($filters, 'smooth-animation-speed')) {
+  @include utility($classname: 'filter.smooth', $property: --extra-smooth, $modifier: $transition-duration, $variant: $v-filter);
+}
+
+// Utilities for sets filter backdrop brightness, contrast, saturate and blur effects to an element.
+@if (map-get($filters, 'backdrop-filter')) {
+  @include variant(()) using ($props...) {
+    $backdrop-filter-params: "brightness(var(--backdrop-brightness)) contrast(var(--backdrop-contrast)) saturate(var(--backdrop-saturate)) blur(var(--backdrop-blur)) hue-rotate(var(--backdrop-hue-rotate))";
+    #{$id}backdrop-filter {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null){
+        --backdrop-blur: 0px;
+        --backdrop-brightness: 1;
+        --backdrop-contrast: 1;
+        --backdrop-hue-rotate: 0deg;
+        --backdrop-saturate: 1;
+        backdrop-filter: #{$backdrop-filter-params} #{$override};
+      }
+    }
+  }
+  @if (map-get($filters, 'backdrop-filter-brightness')) {
+    @include utility($classname: 'backdrop-filter.brightness', $property: --backdrop-brightness, $modifier: $filter-compose);
+  }
+  @if (map-get($filters, 'backdrop-filter-contrast')) {
+    @include utility($classname: 'backdrop-filter.contrast', $property: --backdrop-contrast, $modifier: $filter-compose);
+  }
+  @if (map-get($filters, 'backdrop-filter-saturate')) {
+    @include utility($classname: 'backdrop-filter.saturate', $property: --backdrop-saturate, $modifier: $filter-compose);
+  }
+  @if (map-get($filters, 'backdrop-filter-blur')) {
+    @include utility($classname: 'backdrop-filter.blur', $property: --backdrop-blur, $modifier: $filter-blur);
+  }
+  @if (map-get($filters, 'backdrop-filter-hue-rotate')) {
+    @include utility($classname: 'backdrop-filter.hue-rotate', $property: --backdrop-hue-rotate, $modifier: $filter-hue-rotate);
+    @include utility($classname: 'backdrop-filter.-hue-rotate', $property: --backdrop-hue-rotate, $modifier: $filter-hue-rotate-neg);
+  }
+}
+
+// Utilities for sets filter inverts effect to an element.
+@if (map-get($filters, 'invert')) {
+  @include variant($v-filter-invert) using ($props...) {
+    #{$id}invert {
+      @include pseudo($filter-invert, $props...) using ($value) {
+        filter: invert($value) #{$override};
+      }
+    }
+  }
+}

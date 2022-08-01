@@ -1,0 +1,118 @@
+/**
+ * @file: modules/utilities/_spacing.scss
+ */
+
+// Utilities for sets balancing the space in between child elements.
+@if (map-get($spaces, 'equal')) {
+  @include variant(()) using ($props...) {
+    #{$id}equal-x {
+      @include pseudo($equal, $props..., $replace: 'trashequal') using ($value) {
+        --equal-x-reverse: 0;
+        margin-left: calc(#{$value} * calc(1 - var(--equal-x-reverse))) #{$override};
+        margin-right: calc(#{$value} * var(--equal-x-reverse)) #{$override};
+      }
+    }
+    -#{$id}equal-x {
+      @include pseudo($equal, $props..., $replace: 'trashequal') using ($value) {
+        --equal-x-reverse: 0;
+        margin-left: calc(-#{$value} * calc(1 - var(--equal-x-reverse))) #{$override};
+        margin-right: calc(-#{$value} * var(--equal-x-reverse)) #{$override};
+      }
+    }
+  }
+  @include variant(()) using ($props...) {
+    #{$id}equal-y {
+      @include pseudo($equal, $props..., $replace: 'trashequal') using ($value) {
+        --equal-y-reverse: 0;
+        margin-top: calc(#{$value} * calc(1 - var(--equal-y-reverse))) #{$override};
+        margin-bottom: calc(#{$value} * var(--equal-y-reverse)) #{$override};
+      }
+    }
+    -#{$id}equal-y {
+      @include pseudo($equal, $props..., $replace: 'trashequal') using ($value) {
+        --equal-y-reverse: 0;
+        margin-top: calc(-#{$value} * calc(1 - var(--equal-y-reverse))) #{$override};
+        margin-bottom: calc(-#{$value} * var(--equal-y-reverse)) #{$override};
+      }
+    }
+  }
+  @include variant(()) using ($props...) { // -- global
+    #{$id}equal-x {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashequal') using ($value: null) {
+        --equal-x-reverse: 1;
+      }
+    }
+    #{$id}equal-y {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashequal') using ($value: null) {
+        --equal-y-reverse: 1;
+      }
+    }
+  }
+}
+
+// Utilities for controls margin (and negative margin) in 0.25rem increments.
+@if (map-get($spaces, 'margin')) {
+  @include utility($classname: 'margin', $property: margin, $modifier: $spacing, $variant: $v-margin);
+  @include utility($classname: 'margin', $property: margin, $modifier: $spacing, $negative: true, $variant: $v-margin);
+  @include variant($v-margin) using ($props...) {
+    #{$id}margin-x {
+      @include pseudo($spacing, $props...) using ($value) {
+        margin-left: #{$value} #{$override};
+        margin-right: #{$value} #{$override};
+      }
+    }
+    -#{$id}margin-x {
+      @include pseudo($spacing, $props...) using ($value) {
+        margin-left: -#{$value} #{$override};
+        margin-right: -#{$value} #{$override};
+      }
+    }
+  }
+  @include variant($v-margin) using ($props...) {
+    #{$id}margin-y {
+      @include pseudo($spacing, $props...) using ($value) {
+        margin-top: #{$value} #{$override};
+        margin-bottom: #{$value} #{$override};
+      }
+    }
+    -#{$id}margin-y { // -- negative
+      @include pseudo($spacing, $props...) using ($value) {
+        margin-top: -#{$value} #{$override};
+        margin-bottom: -#{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'margin-t', $property: margin-top, $modifier: $spacing, $variant: $v-margin);
+  @include utility($classname: 'margin-t', $property: margin-top, $modifier: $spacing, $negative: true, $variant: $v-margin);
+  @include utility($classname: 'margin-b', $property: margin-bottom, $modifier: $spacing, $variant: $v-margin);
+  @include utility($classname: 'margin-b', $property: margin-bottom, $modifier: $spacing, $negative: true, $variant: $v-margin);
+  @include utility($classname: 'margin-l', $property: margin-left, $modifier: $spacing, $variant: $v-margin);
+  @include utility($classname: 'margin-l', $property: margin-left, $modifier: $spacing, $negative: true, $variant: $v-margin);
+  @include utility($classname: 'margin-r', $property: margin-right, $modifier: $spacing, $variant: $v-margin);
+  @include utility($classname: 'margin-r', $property: margin-right, $modifier: $spacing, $negative: true, $variant: $v-margin);
+}
+
+// Utilities for controls padding in 0.25rem increments.
+@if (map-get($spaces, 'padding')) {
+  @include utility($classname: 'padding', $property: padding, $modifier: $spacing, $variant: $v-padding);
+  @include variant($v-padding) using ($props...) {
+    #{$id}padding-x {
+      @include pseudo($spacing, $props...) using ($value) {
+        padding-left: #{$value} #{$override};
+        padding-right: #{$value} #{$override};
+      }
+    }
+  }
+  @include variant($v-padding) using ($props...) {
+    #{$id}padding-y {
+      @include pseudo($spacing, $props...) using ($value) {
+        padding-top: #{$value} #{$override};
+        padding-bottom: #{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'padding-t', $property: padding-top, $modifier: $spacing, $variant: $v-padding);
+  @include utility($classname: 'padding-b', $property: padding-bottom, $modifier: $spacing, $variant: $v-padding);
+  @include utility($classname: 'padding-l', $property: padding-left, $modifier: $spacing, $variant: $v-padding);
+  @include utility($classname: 'padding-r', $property: padding-right, $modifier: $spacing, $variant: $v-padding);
+}

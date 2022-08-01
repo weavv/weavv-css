@@ -1,0 +1,44 @@
+{
+  "name": "weavv-css",
+  "version": "1.2.1",
+  "description": "A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level",
+  "main": "./dist/weavv-1.2.1.min.css",
+  "scripts": {
+    "gulp": "gulp",
+    "build": "gulp build",
+    "update-version": "gulp versioning",
+    "clean": "gulp clean"
+  },
+  "keywords": [
+    "css-framework",
+    "css-library",
+    "css-utilites",
+    "functional-css",
+    "lowlevel-css",
+    "utility-classes"
+  ],
+  "author": "Louis Low <iamlouislow@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weavv/weavv-css/issues"
+  },
+  "homepage": "https://weavvcss.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weavv/weavv-css/weavv-css.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "gulp": "^4.0.0",
+    "gulp-bytediff": "^1.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.2.0",
+    "gulp-shell": "^0.8.0",
+    "gulp-sizereport": "^1.2.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "sass": "^1.43.5"
+  }
+}

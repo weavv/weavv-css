@@ -1,0 +1,44 @@
+/**
+ * @file: modules/utilities/_fluids.scss
+ */
+
+// Utilities for sets min and max font sizes for screen size without breakpoints.
+@if (map-get($fluids, 'font-size')) {
+  @include variant(()) using ($props...) {
+    @each $modifier1, $value1 in $font-size {
+      @each $modifier2, $value2 in $font-size {
+        #{$id}fluid.text-min-#{$modifier1}.text-max-#{$modifier2} {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            @include fluid($cssProperty: font-size, $minVW: $minScreen, $maxVW: $maxScreen, $maxValue: $value1, $minValue: $value2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets min and max margins for screen size without breakpoints.
+@if (map-get($fluids, 'margin')) {
+  @include variant(()) using ($props...) {
+    @each $modifier1, $value1 in $fluid-spacing {
+      @each $modifier2, $value2 in $fluid-spacing {
+        #{$id}fluid.margin-min-#{$modifier1}.margin-max-#{$modifier2} {
+          @include fluid($cssProperty: margin, $minVW: $minScreen, $maxVW: $maxScreen, $maxValue: $value1, $minValue: $value2);
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets min and max paddings for screen size without breakpoints.
+@if (map-get($fluids, 'padding')) {
+  @include variant(()) using ($props...) {
+    @each $modifier1, $value1 in $fluid-spacing {
+      @each $modifier2, $value2 in $fluid-spacing {
+        #{$id}fluid.padding-min-#{$modifier1}.padding-max-#{$modifier2} {
+          @include fluid($cssProperty: padding, $minVW: $minScreen, $maxVW: $maxScreen, $maxValue: $value1, $minValue: $value2);
+        }
+      }
+    }
+  }
+}

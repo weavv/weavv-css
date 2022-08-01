@@ -1,0 +1,336 @@
+/**
+ * @file: modules/utilities/_interactivity.scss
+ */
+
+// Utilities for disables native styling based on the native browser theme.
+@if (map-get($interactivity, 'appearance')) {
+  @include utility($classname: 'appearance', $property: appearance, $modifier: $appearance);
+}
+
+// Utilities for changes the cursor when hovering over an element.
+@if (map-get($interactivity, 'cursor')) {
+  @include utility($classname: 'cursor', $property: cursor, $modifier: $cursor);
+}
+
+// Utilities for sets an scrollable element that won't affecting the parent scrollable element on touch device.
+@if (map-get($interactivity, 'overscroll')) {
+  @include utility($classname: 'overscroll', $property: overscroll-behavior, $modifier: $overscroll, $variant: $v-overscroll);
+  @include utility($classname: 'overscroll', $property: overscroll-behavior-x, $modifier: $overscroll-x, $variant: $v-overscroll);
+  @include utility($classname: 'overscroll', $property: overscroll-behavior-y, $modifier: $overscroll-y, $variant: $v-overscroll);
+}
+
+// Utilities for specifies whether an element is the target of mouse events.
+@if (map-get($interactivity, 'pointer-events')) {
+  @include utility($classname: 'pointer-events', $property: pointer-events, $modifier: $pointer-events);
+}
+
+// Utilities for sets whether an element is resizable, along with direction.
+@if (map-get($interactivity, 'resize')) {
+  @include variant(()) using ($props...) {
+    #{$id}resize {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        resize: both #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'resize', $property: resize, $modifier: $resize);
+}
+
+// Utilities for sets smooth animation of scroll anchored position within a scrolling box.
+@if (map-get($interactivity, 'scroll-smooth')) {
+  @include variant(()) using ($props...) {
+    #{$id}scroll-smooth {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        scroll-behavior: smooth #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets viewport lock to certain elements or locations after finished scrolling.
+@if (map-get($interactivity, 'scroll-snap')) {
+  @include variant(()) using ($props...) {
+    @each $modifier, $mode in $scroll-snap-type {
+      #{$id}scroll-snap.#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          scroll-snap-type: #{$mode} #{$override};
+        }
+      }
+    }
+    #{$id}scroll-snap.align {
+      @include pseudo($scroll-snap-align, $props..., $replace: 'trashscrollsnap') using ($value) {
+        scroll-snap-align: #{$value} #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets scroll-snap container sticks to the top of the viewport with padding and forces the page to stop scrolling.
+@if (map-get($interactivity, 'scroll-padding')) {
+  @include variant(()) using ($props...) {
+    #{$id}scroll-padding {
+      @include pseudo($spacing, $props...) using ($value: null) {
+        scroll-padding: #{$value} #{$value} #{$value} #{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'scroll-padding-t', $property: scroll-padding-top, $modifier: $spacing);
+  @include utility($classname: 'scroll-padding-b', $property: scroll-padding-bottom, $modifier: $spacing);
+  @include utility($classname: 'scroll-padding-l', $property: scroll-padding-left, $modifier: $spacing);
+  @include utility($classname: 'scroll-padding-r', $property: scroll-padding-right, $modifier: $spacing);
+}
+
+// Utilities for sets scroll-snap container sticks to the top of the viewport with margin and forces the page to stop scrolling.
+@if (map-get($interactivity, 'scroll-margin')) {
+  @include variant(()) using ($props...) {
+    #{$id}scroll-margin {
+      @include pseudo($spacing, $props...) using ($value: null) {
+        scroll-margin: #{$value} #{$value} #{$value} #{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'scroll-margin-t', $property: scroll-margin-top, $modifier: $spacing);
+  @include utility($classname: 'scroll-margin-b', $property: scroll-margin-bottom, $modifier: $spacing);
+  @include utility($classname: 'scroll-margin-l', $property: scroll-margin-left, $modifier: $spacing);
+  @include utility($classname: 'scroll-margin-r', $property: scroll-margin-right, $modifier: $spacing);
+}
+
+// Utilities for set control over the effect of touchscreen interactions to an element.
+@if (map-get($interactivity, 'touch-action')) {
+  @include utility($classname: 'touch', $property: touch-action, $modifier: $touch-action);
+}
+
+// Utilities for controls whether the user can select text.
+@if (map-get($interactivity, 'user-select')) {
+  @include utility($classname: 'select', $property: user-select, $modifier: $user-select);
+}
+
+// Utilities for sets scrollbar styling such as thumb size, track color, thumb color, thumb radius and thumb hover color.
+@if (map-get($interactivity, 'scroll-bar')) {
+  @include variant(()) using ($props...) {
+    #{$id}scrollbar::-webkit-scrollbar {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --scrollbar-size: 14px;
+        width: var(--scrollbar-size) #{$override};
+        height: var(--scrollbar-size) #{$override};
+      }
+    }
+    #{$id}scrollbar::-webkit-scrollbar-track {
+      @include pseudo((null: null), $props...,$modifier: false) using ($value: null) {
+        --scrollbar-track-color: transparent;
+        background-color: var(--scrollbar-track-color) #{$override};
+      }
+    }
+    #{$id}scrollbar::-webkit-scrollbar-thumb {
+      @include pseudo((null: null), $props...,$modifier: false) using ($value: null) {
+        --scrollbar-thumb-bgcolor: #d6dee1;
+        --scrollbar-radius: 20px;
+        --scrollbar-width: 0px;
+        --scrollbar-thumb-color: transparent;
+        background-color: var(--scrollbar-thumb-bgcolor) #{$override};
+        border-radius: var(--scrollbar-radius) #{$override};
+        border: var(--scrollbar-width) solid var(--scrollbar-thumb-color) #{$override};
+        background-clip: content-box #{$override};
+      }
+    }
+    #{$id}scrollbar::-webkit-scrollbar-thumb:hover {
+      @include pseudo((null: null), $props...,$modifier: false) using ($value: null) {
+        --scrollbar-hover-bgcolor: #a8bbbf;
+        background-color: var(--scrollbar-hover-bgcolor) #{$override};
+      }
+    }
+    #{$id}scrollbar.bar {
+      @include pseudo($scrollbar-size, $props..., $replace: 'trashscrollbarsize') using ($value) {
+        --scrollbar-size: #{$value};
+      }
+    }
+    #{$id}scrollbar.thumb-rad {
+      @include pseudo($border-radius, $props..., $replace: 'trashscrollbarradius') using ($value) {
+        --scrollbar-radius: #{$value};
+      }
+    }
+    @if (map-get($interactivity, 'scroll-bar-color', 'shade')) {
+      @each $palette, $modifier, $hex in $color-shades-legacy {
+        #{$id}scrollbar.track-shade-#{$palette}-#{$modifier}::-webkit-scrollbar-track {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          --scrollbar-track-color: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-thumb-bgcolor: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-hover-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb:hover {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-hover-bgcolor: #{$hex};
+          }
+        }
+      }
+    }
+    @if (map-get($interactivity, 'scroll-bar-color', 'tone')) {
+      @each $palette, $modifier, $hex in $color-tones-legacy {
+        #{$id}scrollbar.track-tone-#{$palette}-#{$modifier}::-webkit-scrollbar-track {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          --scrollbar-track-color: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-thumb-bgcolor: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-hover-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb:hover {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-hover-bgcolor: #{$hex};
+          }
+        }
+      }
+    }
+    @if (map-get($interactivity, 'scroll-bar-color', 'tint')) {
+      @each $palette, $modifier, $hex in $color-tints-legacy {
+        #{$id}scrollbar.track-tint-#{$palette}-#{$modifier}::-webkit-scrollbar-track {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          --scrollbar-track-color: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-thumb-bgcolor: #{$hex};
+          }
+        }
+        #{$id}scrollbar.thumb-hover-#{$palette}-#{$modifier}::-webkit-scrollbar-thumb:hover {
+          @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+            --scrollbar-hover-bgcolor: #{$hex};
+          }
+        }
+      }
+    }
+  }
+}
+
+// Utilities for overrides browser-level or system-level text highlight color to an elements.
+@if (map-get($interactivity, 'text-highlight', 'shade')) {
+  @include variant(()) using ($props...) {
+    @each $palette, $modifier, $hex in $color-shades-legacy {
+      #{$id}highlight.fore-shade-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override};
+        }
+      }
+      #{$id}highlight.rear-shade-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          background: #{$hex} #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($interactivity, 'text-highlight', 'tone')) {
+  @include variant(()) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tones-legacy {
+      #{$id}highlight.fore-tone-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override};
+        }
+      }
+      #{$id}highlight.rear-tone-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          background: #{$hex} #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($interactivity, 'text-highlight', 'shade')) {
+  @include variant(()) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tints-legacy {
+      #{$id}highlight.fore-tint-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override};
+        }
+      }
+      #{$id}highlight.rear-tint-#{$palette}-#{$modifier}::selection {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          background: #{$hex} #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities to set outline style surrounding the edge of an element, including the width thickness, color and outline offset.
+@if (map-get($interactivity, 'outline')) {
+  @include variant(()) using ($props...) {
+    #{$id}outline {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --outline-style: none;
+        --outline-thickness: 1px;
+        --outline-offset: 0;
+        --outline-color: currentColor;
+        outline-style: var(--outline-style) #{$override};
+        outline-width: var(--outline-thickness) #{$override};
+        outline-offset: var(--outline-offset) #{$override};
+        outline-color: var(--outline-color) #{$override}
+      }
+    }
+  }
+  @include utility($classname: 'outline.style', $property: --outline-style, $modifier: $outline-styles, $variant: $v-outline);
+  @include utility($classname: 'outline.thickness', $property: --outline-thickness, $modifier: $outline-width);
+  @include utility($classname: 'outline.offset', $property: --outline-offset, $modifier: $outline-offset);
+  // -- white, black, currentColor
+  @include utility($classname: 'outline', $property: --outline-color, $modifier: $special-colors, $variant: $v-outline);
+  @include variant($v-outline-color) using ($props...) {
+    #{$id}outline-shade {
+      @include pseudo($color-shades, $props...) using ($value) {
+        --outline-opacity: 1;
+        outline-color: rgba($value, var(--outline-opacity)) #{$override};
+      }
+    }
+  }
+  @include variant($v-outline-color) using ($props...) {
+    #{$id}outline-tone {
+      @include pseudo($color-tones, $props...) using ($value) {
+        --outline-opacity: 1;
+        outline-color: rgba($value, var(--outline-opacity)) #{$override};
+      }
+    }
+  }
+  @include variant($v-outline-color) using ($props...) {
+    #{$id}outline-tint {
+      @include pseudo($color-tints, $props...) using ($value) {
+        --outline-opacity: 1;
+        outline-color: rgba($value, var(--outline-opacity)) #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for re-tinting the accented color of form controls including checkbox, radio button and, range.
+@if (map-get($interactivity, 'accent-color', 'shade')) {
+  @include variant($v-accent-color) using ($props...) {
+    #{$id}accent-shade {
+      @include pseudo($color-shades, $props...) using ($value) {
+        accent-color: #{$value} #{$override};
+      }
+    }
+  }
+}
+@if (map-get($interactivity, 'accent-color', 'tone')) {
+  @include variant($v-accent-color) using ($props...) {
+    #{$id}accent-tone {
+      @include pseudo($color-tones, $props...) using ($value) {
+        accent-color: #{$value} #{$override};
+      }
+    }
+  }
+}
+@if (map-get($interactivity, 'accent-color', 'tint')) {
+  @include variant($v-accent-color) using ($props...) {
+    #{$id}accent-tint {
+      @include pseudo($color-tints, $props...) using ($value) {
+        accent-color: #{$value} #{$override};
+      }
+    }
+  }
+}

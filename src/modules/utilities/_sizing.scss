@@ -1,0 +1,45 @@
+/**
+ * @file: modules/utilities/_sizing.scss
+ */
+
+// Utilities for sets the height of an element.
+@if (map-get($sizing, 'height')) {
+  @include utility($classname: 'height', $property: height, $modifier: $height, $variant: $v-height);
+}
+
+// Utilities for sets the width of an element.
+@if (map-get($sizing, 'width')) {
+  @include utility($classname: 'width', $property: width, $modifier: $width, $variant: $v-width);
+}
+
+// Utilities for sets the maximum height of an element.
+@if (map-get($sizing, 'max-height')) {
+  @include utility($classname: 'max-height', $property: max-height, $modifier: $max-height, $variant: $v-max-height);
+}
+
+// Utilities for sets the maximum width of an element.
+@if (map-get($sizing, 'max-width')) {
+  @include utility($classname: 'max-width', $property: max-width, $modifier: $max-width, $variant: $v-max-width);
+}
+
+// Utilities for sets the mininum height of an element.
+@if (map-get($sizing, 'min-height')) {
+  @include utility($classname: 'min-height', $property: min-height, $modifier: $min-height, $variant: $v-min-height);
+}
+
+// Utilities for sets the minimum width of an element.
+@if (map-get($sizing, 'min-width')) {
+  @include utility($classname: 'min-width', $property: min-width, $modifier: $min-width, $variant: $v-min-width);
+}
+
+// Utilities for resizing width and height in the proportion of an element.
+@if (map-get($sizing, 'proportional-scale')) {
+  @include variant($v-proportion-scale) using ($props...) {
+    #{$id}proportion-scale {
+      @include pseudo($proportion-scale, $props...) using ($value) {
+        transform: scale($value) #{$override}; /* fallback */
+        scale: $value #{$override}
+      }
+    }
+  }
+}

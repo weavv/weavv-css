@@ -1,0 +1,100 @@
+/**
+ * @file: modules/_helpers.scss
+ */
+
+/**
+  * Get the mobile-first media queries for all defined screens.
+  * @return: {List}  Returns reponsive media queries.
+  */
+@function get-responsive() {
+
+  $result: ();
+
+  @each $key, $value in $screens {
+    $result: map.set($result, $key, '@media (min-width: #{$value})');
+  }
+
+  @return $result;
+}
+
+
+/**
+  * Get the media query for `prefers-color-scheme: dark`.
+  * @return: {List}  Returns the dark media query.
+  */
+@function get-dark-mode() {
+  @return (
+    'dark': '@media (prefers-color-scheme: dark)',
+  );
+}
+
+
+/**
+  * Get the media query for `prefers-color-scheme: light`.
+  * @return: {List} Returns the light media query.
+  */
+@function get-light-mode() {
+  @return (
+    'light': '@media (prefers-color-scheme: light)',
+  );
+}
+
+
+/**
+  * Get the media query for `prefers-reduced-motion`.
+  * @return: {List}  Returns the reduced-motion media query.
+  */
+@function get-reduce-motion() {
+  @return (
+    'reduce-motion': '@media (prefers-reduced-motion: reduce)',
+  );
+}
+
+
+/**
+ * Get the media query for `orientation: portrait`.
+ * @return: {List}  Returns the orientation media query.
+ */
+@function get-portrait() {
+  @return (
+    'portrait': '@media (orientation: portrait)',
+  );
+}
+
+
+/**
+ * Get the media query for `orientation: landscape`.
+ * @return: {List}  Returns the orientation media query.
+ */
+@function get-landscape() {
+  @return (
+    'landscape': '@media (orientation: landscape)',
+  );
+}
+
+
+/**
+  * Convert a string to a proper class selector.
+  * @param: {String}  $selector
+  * @return: {Selector}  Returns the class selector.
+  */
+@function string-to-class($selector) {
+
+  $separator: list.separator($selector);
+  $result: ();
+
+  @each $selector in $selector {
+    $result: list.append($result, '.#{$selector}', $separator);
+  }
+
+  @return $result;
+}
+
+
+/**
+  * Remove string value from unit `px`
+  * @param: {String} $value
+  */
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1)
+}

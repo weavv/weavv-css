@@ -1,0 +1,145 @@
+/**
+ * @file: configs/_variants.scss
+ * @desc: Variant settings for each utility.
+ */
+
+/* accessibility */
+
+/* animations */
+
+$v-animation-blur: ('hover');
+$v-animation-fade: ('hover');
+$v-animation-roll: ('hover');
+$v-animation-slide: ('hover');
+
+/* backgrounds */
+
+$v-bg-blend: ('focus-visible', 'focus-within');
+$v-bg-border: (());
+$v-bg-color: ('dark-mode', 'expand', 'hover', 'group-hover', 'focus', 'focus-within', 'focus-visible', 'active', 'visited', 'checked');
+$v-bg-gradient: ('hover', 'focus-visible', 'focus-within');
+$v-bg-gradient-preset: ('dark-mode', 'hover', 'focus-visible', 'focus-within');
+$v-bg-opacity: ('hover', 'focus', 'focus-within', 'expand');
+
+/* borders */
+
+$v-border-color: ('dark-mode', 'hover', 'group-hover', 'focus', 'focus-within', 'focus-visible', 'checked');
+$v-border-radius: ('responsive', 'expand');
+$v-border-style: ('focus');
+$v-border-width: ('hover', 'focus');
+$v-dissect-color: ('hover');
+$v-dissect-opacity: ('hover');
+$v-curve-object: (());
+$v-border-gradient: (());
+
+/* clipping */
+
+/* effects */
+
+$v-shadow-size-color: ('dark-mode', 'focus-visible', 'focus-within', 'expand');
+$v-shadow-solid: ('hover', 'focus', 'focus-visible', 'focus-within', 'expand');
+$v-shadow-dreamy: ('hover', 'focus', 'focus-visible', 'focus-within', 'expand');
+$v-opacity: ('responsive', 'hover', 'group-hover', 'focus', 'focus-visible', 'focus-within');
+$v-mix-blend: ('hover');
+$v-text-offset-shadow: ('hover');
+$v-text-neon-shadow: ('hover');
+
+/* filters */
+
+$v-filter: ('selection-hover');
+$v-filter-invert: ('dark-mode', 'hover', 'group-hover');
+
+/* flexbox */
+
+$v-flex: ('responsive', 'fullscreen');
+$v-flex-center: ('responsive', 'fullscreen', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-flex-align-content: ('responsive', 'fullscreen');
+$v-flex-align-items: ('responsive', 'fullscreen');
+$v-flex-align-self: ('responsive', 'fullscreen');
+$v-flex-direction: ('responsive', 'portrait', 'landscape', 'fullscreen');
+$v-flex-gap: ('responsive');
+$v-flex-grow: ('responsive', 'expand');
+$v-flex-shrink: ('responsive', 'expand');
+$v-flex-wrap: ('responsive');
+$v-flex-justify-content: ('responsive', 'fullscreen');
+$v-flex-order: ('responsive');
+$v-flex-basis: ('responsive');
+
+/* fluids */
+
+/* interactivity */
+
+$v-overscroll: ('responsive');
+$v-outline: ('hover');
+$v-outline-color: ('hover');
+$v-accent-color: ('hover');
+
+/* layouts */
+
+$v-clear: ('responsive');
+$v-display: ('responsive', 'hover', 'group-hover', 'expand');
+$v-inset: ('responsive');
+$v-top-bottom-left-right: ('responsive');
+$v-object-fit: ('responsive');
+$v-object-position: ('responsive');
+$v-overflow: ('responsive', 'hover', 'expand');
+$v-overflow-scrolling: ('responsive');
+$v-position: ('responsive', 'hover', 'group-hover');
+$v-visibility: ('responsive', 'hover', 'group-hover');
+$v-z-index: ('responsive', 'hover', 'focus', 'focus-visible', 'focus-within', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-aspect-ratio: ('responsive');
+
+/* rendering */
+
+/* sizing */
+
+$v-height: ('responsive', 'hover', 'expand', 'fullscreen','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-width: ('responsive', 'hover', 'expand', 'fullscreen','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-max-height: ('responsive');
+$v-min-height: ('responsive');
+$v-max-width: ('responsive');
+$v-min-width: ('responsive');
+$v-proportion-scale: ('responsive');
+
+/* spacing */
+
+$v-margin: ('responsive', 'expand', 'fullscreen','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-padding: ('responsive', 'expand', 'fullscreen','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+
+/* svg */
+
+/* tables */
+
+/* theme */
+
+/* transforms */
+
+$v-transform-origin: ('hover', 'focus', 'focus-visible', 'focus-within');
+$v-transform-scale: ('hover', 'group-hover', 'focus', 'focus-visible');
+$v-transform-rotate: ('hover', 'group-hover', 'focus', 'focus-visible');
+$v-transform-skew: ('hover', 'group-hover', 'focus', 'focus-visible');
+$v-transform-translate: ('hover', 'group-hover', 'focus', 'focus-visible');
+
+/* transitions */
+
+$v-transition: ('reduce-motion');
+
+/* typography */
+
+$v-google-fonts: ('first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-font-size: ('responsive', 'fullscreen', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-font-weight: ('responsive', 'hover', 'group-hover', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-letter-spacing: ('responsive');
+$v-line-height: ('responsive');
+$v-placeholder-color: ('dark-mode', 'focus');
+$v-text-align: ('responsive', 'expand');
+$v-text-color: ('dark-mode', 'hover', 'group-hover', 'focus', 'group-focus', 'focus-visible', 'focus-within', 'visited', 'active', 'checked', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-text-decoration: ('responsive', 'hover', 'group-hover', 'focus', 'focus-visible', 'focus-within', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-text-transform: ('responsive', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-word-break: ('responsive');
+$v-text-glyphs: ('responsive');
+$v-text-stroke: ('hover');
+$v-text-stroke-color: ('hover');
+$v-vertical-align: ('expand');
+$v-whitespace: ('responsive', 'expand','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-column: ('responsive');

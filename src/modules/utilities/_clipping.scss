@@ -1,0 +1,88 @@
+/**
+ * @file: modules/utilities/_clipping.scss
+ */
+
+// Utilities for sets outside clipping path of image or element invisible, inside the clipping path are visible by moving plot x or y.
+@if (map-get($clips, 'polygon')) {
+  @include variant(()) using ($props...) {
+    #{$id}clip-polygon {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --clip-polygon-plot-top-x: 0%;
+        --clip-polygon-plot-top-y: 0%;
+        --clip-polygon-plot-right-x: 0%;
+        --clip-polygon-plot-right-y: 0%;
+        --clip-polygon-plot-bottom-x: 0%;
+        --clip-polygon-plot-bottom-y: 0%;
+        --clip-polygon-plot-left-x: 0%;
+        --clip-polygon-plot-left-y: 0%;
+        clip-path: polygon(
+          var(--clip-polygon-plot-top-x) var(--clip-polygon-plot-top-y),
+          var(--clip-polygon-plot-right-x) var(--clip-polygon-plot-right-y),
+          var(--clip-polygon-plot-bottom-x) var(--clip-polygon-plot-bottom-y),
+          var(--clip-polygon-plot-left-x) var(--clip-polygon-plot-left-y)
+        );
+      }
+    }
+  }
+  @include utility($classname: 'clip-polygon.plot-top-x', $property: --clip-polygon-plot-top-x, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-top-x', $property: --clip-polygon-plot-top-x, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-top-y', $property: --clip-polygon-plot-top-y, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-top-y', $property: --clip-polygon-plot-top-y, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-bottom-x', $property: --clip-polygon-plot-bottom-x, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-bottom-x', $property: --clip-polygon-plot-bottom-x, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-bottom-y', $property: --clip-polygon-plot-bottom-y, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-bottom-y', $property: --clip-polygon-plot-bottom-y, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-left-x', $property: --clip-polygon-plot-left-x, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-left-x', $property: --clip-polygon-plot-left-x, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-left-y', $property: --clip-polygon-plot-left-y, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-left-y', $property: --clip-polygon-plot-left-y, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-right-x', $property: --clip-polygon-plot-right-x, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-right-x', $property: --clip-polygon-plot-right-x, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-polygon.plot-right-y', $property: --clip-polygon-plot-right-y, $modifier: $clipping);
+  @include utility($classname: 'clip-polygon.-plot-right-y', $property: --clip-polygon-plot-right-y, $modifier: $clipping-negative);
+}
+
+// Utilities for sets outside clipping circle path of image or element invisible, inside the clipping path are visible by moving plot x or y and focus area.
+@if (map-get($clips, 'circle')) {
+  @include variant(()) using ($props...) {
+    #{$id}clip-circle {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --clip-circle-focus: 0%;
+        --clip-circle-plot-x: 0%;
+        --clip-circle-plot-y: 0%;
+        clip-path: circle(
+          var(--clip-circle-focus) at
+          var(--clip-circle-plot-x)
+          var(--clip-circle-plot-y)
+        );
+      }
+    }
+  }
+  @include utility($classname: 'clip-circle.focus', $property: --clip-circle-focus, $modifier: $clipping);
+  @include utility($classname: 'clip-circle.plot-x', $property: --clip-circle-plot-x, $modifier: $clipping);
+  @include utility($classname: 'clip-circle.-plot-x', $property: --clip-circle-plot-x, $modifier: $clipping-negative);
+  @include utility($classname: 'clip-circle.plot-y', $property: --clip-circle-plot-y, $modifier: $clipping);
+  @include utility($classname: 'clip-circle.-plot-y', $property: --clip-circle-plot-x, $modifier: $clipping-negative);
+}
+
+// Utilities for sets outside clipping ellipse path of image or element invisible, inside the clipping path are visible by moving plot x or y and focus area.
+@if (map-get($clips, 'ellipse')) {
+  @include variant(()) using ($props...) {
+    #{$id}clip-ellipse {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --clip-ellipse-focus-x: 0%;
+        --clip-ellipse-focus-y: 0%;
+        --clip-ellipse-plot-x: 0%;
+        --clip-ellipse-plot-y: 0%;
+        clip-path: ellipse(
+          var(--clip-ellipse-focus-x) var(--clip-ellipse-focus-y) at
+          var(--clip-ellipse-plot-x) var(--clip-ellipse-plot-y)
+        );
+      }
+    }
+  }
+  @include utility($classname: 'clip-ellipse.focus-x', $property: --clip-ellipse-focus-x, $modifier: $clipping);
+  @include utility($classname: 'clip-ellipse.focus-y', $property: --clip-ellipse-focus-y, $modifier: $clipping);
+  @include utility($classname: 'clip-ellipse.plot-x', $property: --clip-ellipse-plot-x, $modifier: $clipping);
+  @include utility($classname: 'clip-ellipse.plot-y', $property: --clip-ellipse-plot-y, $modifier: $clipping);
+}

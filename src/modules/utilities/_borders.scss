@@ -1,0 +1,244 @@
+/**
+ * @file: modules/utilities/_borders.scss
+ */
+
+// Utilities for sets border color.
+@if (map-get($borders, 'color', 'shade')) {
+  // -- white, black, currentColor
+  @include utility($classname: 'border', $property: border-color, $modifier: $special-colors, $variant: $v-border-color);
+  @include utility($classname: 'border-shade', $property: border-color, $modifier: $color-shades, $variant: $v-border-color);
+}
+@if (map-get($borders, 'color', 'tone')) {
+  @include utility($classname: 'border-tone', $property: border-color, $modifier: $color-tones, $variant: $v-border-color);
+}
+@if (map-get($borders, 'color', 'tint')) {
+  @include utility($classname: 'border-tint', $property: border-color, $modifier: $color-tints, $variant: $v-border-color);
+}
+
+// Utilities for sets border radius.
+@if (map-get($borders, 'radius')) {
+  @include variant(()) using ($props...) {
+    #{$id}curve-border {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        border-radius: 0.25rem #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'curve-border', $property: border-radius, $modifier: $border-radius, $variant: $v-border-radius);
+  @include variant(()) using ($props...) {
+    #{$id}curve-border-t {
+      @include pseudo($border-radius, $props...) using ($value) {
+        border-top-left-radius: #{$value} #{$override};
+        border-top-right-radius: #{$value} #{$override};
+      }
+    }
+    #{$id}curve-border-b {
+      @include pseudo($border-radius, $props...) using ($value) {
+        border-bottom-right-radius: #{$value} #{$override};
+        border-bottom-left-radius: #{$value} #{$override};
+      }
+    }
+    #{$id}curve-border-l {
+      @include pseudo($border-radius, $props...) using ($value) {
+        border-top-left-radius: #{$value} #{$override};
+        border-bottom-left-radius: #{$value} #{$override};
+      }
+    }
+    #{$id}curve-border-r {
+      @include pseudo($border-radius, $props...) using ($value) {
+        border-top-right-radius: #{$value} #{$override};
+        border-bottom-right-radius: #{$value} #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'curve-border-bl', $property: border-bottom-left-radius, $modifier: $border-radius);
+  @include utility($classname: 'curve-border-br', $property: border-bottom-right-radius, $modifier: $border-radius);
+  @include utility($classname: 'curve-border-tl', $property: border-top-left-radius, $modifier: $border-radius);
+  @include utility($classname: 'curve-border-tr', $property: border-top-right-radius, $modifier: $border-radius);
+}
+
+// Utilities for sets border style.
+@if (map-get($borders, 'style')) {
+  @include utility($classname: 'border', $property: border-style, $modifier: $border-style, $variant: $v-border-style);
+}
+
+// Utilities for sets border width in increments of 1px.
+@if (map-get($borders, 'width')) {
+  @include variant($v-border-width) using ($props...) {
+    #{$id}border {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        border-width: 0.0625em #{$override};
+      }
+    }
+  }
+  @include utility($classname: 'border', $property: border-width, $modifier: $border-width, $variant: $v-border-width);
+  @include utility($classname: 'border-t', $property: border-top-width, $modifier: $border-width, $variant: v-border-width);
+  @include utility($classname: 'border-b', $property: border-bottom-width, $modifier: $border-width, $variant: $v-border-width);
+  @include utility($classname: 'border-l', $property: border-left-width, $modifier: $border-width, $variant: $v-border-width);
+  @include utility($classname: 'border-r', $property: border-right-width, $modifier: $border-width, $variant: $v-border-width);
+}
+
+// Utilities for sets bottom border on each child elements of its parent.
+@if (map-get($borders, 'dissect')) {
+  @include variant(()) using ($props...) {
+    #{$id}dissect-x {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        --dissect-x-reverse: 0;
+        border-left-width: calc(1px * calc(1 - var(--dissect-x-reverse))) #{$override};
+        border-right-width: calc(1px * var(--dissect-x-reverse)) #{$override};
+      }
+    }
+    #{$id}dissect-x {
+      @include pseudo($border-dissect, $props..., $replace: 'trashdissect') using ($value) {
+        --dissect-x-reverse: 0;
+        border-left-width: calc(#{$value} * calc(1 - var(--dissect-x-reverse))) #{$override};
+        border-right-width: calc(#{$value} * var(--dissect-x-reverse)) #{$override};
+      }
+    }
+    #{$id}dissect-x-reverse {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        --dissect-x-reverse: 1;
+      }
+    }
+    #{$id}dissect-y {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        --dissect-y-reverse: 0;
+        border-top-width: calc(1px * calc(1 - var(--dissect-y-reverse))) #{$override};
+        border-bottom-width: calc(1px * var(--dissect-y-reverse)) #{$override};
+      }
+    }
+    #{$id}dissect-y {
+      @include pseudo($border-dissect, $props..., $replace: 'trashdissect') using ($value) {
+        --dissect-y-reverse: 0;
+        border-top-width: calc(#{$value} * calc(1 - var(--dissect-y-reverse))) #{$override};
+        border-bottom-width: calc(#{$value} * var(--dissect-y-reverse)) #{$override};
+      }
+    }
+    #{$id}dissect-y-reverse {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        --dissect-y-reverse: 1;
+      }
+    }
+    #{$id}dissect-transparent {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        border-color: transparent #{$override};
+      }
+    }
+      #{$id}dissect-current {
+      @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+        border-color: currentColor #{$override};
+      }
+    }
+  }
+}
+
+// Utilities for sets bottom border color on each child elements of its parent.
+@if (map-get($borders, 'dissect-color', 'shade')) {
+  @include variant($v-dissect-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-shades-legacy {
+      #{$id}dissect-shade-#{$palette}-#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+          --dissect-opacity: 1;
+          border-color: #{$hex} #{$override};
+          border-color: rgba($hex, var(--dissect-opacity)) #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($borders, 'dissect-color', 'tone')) {
+  @include variant($v-dissect-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tones-legacy {
+      #{$id}dissect-tone-#{$palette}-#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+          --dissect-opacity: 1;
+          border-color: #{$hex} #{$override};
+          border-color: rgba($hex, var(--dissect-opacity)) #{$override};
+        }
+      }
+    }
+  }
+}
+@if (map-get($borders, 'dissect-color', 'tint')) {
+  @include variant($v-dissect-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tints-legacy {
+      #{$id}dissect-tint-#{$palette}-#{$modifier} {
+        @include pseudo((null: null), $props..., $modifier: false, $replace: 'trashdissect') using ($value: null) {
+          --dissect-opacity: 1;
+          border-color: #{$hex} #{$override};
+          border-color: rgba($hex, var(--dissect-opacity)) #{$override};
+        }
+      }
+    }
+  }
+}
+
+// Utilities for sets opacity to bottom border on each child elements of its parent.
+@if (map-get($borders, 'dissect-opacity')) {
+  @include utility($classname: 'dissect-opacity', $property: --dissect-opacity, $modifier: $opacity, $replace: 'trashdissect', $variant: $v-dissect-opacity);
+}
+
+// Utilities for set border-radius to draw multiple curve-borders abstract object to an element.
+@if (map-get($borders, 'curve-object')) {
+  @include variant($v-curve-object) using ($props...) {
+    #{$id}curve-object {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --object-radius-top-left: 0%;
+        --object-radius-top-right: 0%;
+        --object-radius-bottom-right: 0%;
+        --object-radius-bottom-left: 0%;
+        --object-curve-border-left-top-bottom: 0%;
+        --object-curve-border-right-top-bottom: 0%;
+        --object-curve-border-right-bottom-top: 0%;
+        --object-curve-border-left-bottom-top: 0%;
+        border-radius:
+          var(--object-radius-top-left) var(--object-radius-top-right) var(--object-radius-bottom-right) var(--object-radius-bottom-left) / var(--object-curve-border-left-top-bottom) var(--object-curve-border-right-top-bottom) var(--object-curve-border-right-bottom-top) var(--object-curve-border-left-bottom-top);
+      }
+    }
+  }
+  @include utility($classname: 'curve-object.radius-tl', $property: --object-radius-top-left, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.radius-tr', $property: --object-radius-top-right, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.radius-br', $property: --object-radius-bottom-right, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.radius-bl', $property: --object-radius-bottom-left, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-border-ltb', $property: --object-curve-border-left-top-bottom, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-border-rtb', $property: --object-curve-border-right-top-bottom, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-border-rbt', $property: --object-curve-border-right-bottom-top, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-border-lbt', $property: --object-curve-border-left-bottom-top, $modifier: $border-curve-object);
+}
+
+// Utilities for sets border with two different colours as gradient, adjust gradient angle and configure inner colour to an element.
+@if (map-get($borders, 'gradient')) {
+  @include variant($v-border-gradient) using ($props...) {
+    #{$id}border-gradient {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        --border-gradient-width: 0.2em;
+        --border-gradient-inner-color: white;
+        --border-gradient-start-color: rgb(0,0,0,0.5);
+        --border-gradient-stop-color: rgb(0,0,0,0.1);
+        --border-gradient-angle: 90deg;
+        --border-gradient-radius: 0rem;
+        border: var(--border-gradient-width) solid transparent;
+        border-radius: var(--border-gradient-radius);
+        background:
+          linear-gradient(var(--border-gradient-inner-color), var(--border-gradient-inner-color)) padding-box,
+          linear-gradient(var(--border-gradient-angle), var(--border-gradient-start-color), var(--border-gradient-stop-color)) border-box;
+      }
+    }
+  }
+  @include utility($classname: 'border-gradient.size', $property: --border-gradient-width, $modifier: $border-width);
+  @include utility($classname: 'border-gradient.inner', $property: --border-gradient-inner-color, $modifier: $special-colors);
+  @include utility($classname: 'border-gradient.inner-shade', $property: --border-gradient-inner-color, $modifier: $color-shades);
+  @include utility($classname: 'border-gradient.inner-tone', $property: --border-gradient-inner-color, $modifier: $color-tones);
+  @include utility($classname: 'border-gradient.inner-tint', $property: --border-gradient-inner-color, $modifier: $color-tints);
+  @include utility($classname: 'border-gradient.start', $property: --border-gradient-start-color, $modifier: $special-colors);
+  @include utility($classname: 'border-gradient.start-shade', $property: --border-gradient-start-color, $modifier: $color-shades);
+  @include utility($classname: 'border-gradient.start-tone', $property: --border-gradient-start-color, $modifier: $color-tones);
+  @include utility($classname: 'border-gradient.start-tint', $property: --border-gradient-start-color, $modifier: $color-tints);
+  @include utility($classname: 'border-gradient.stop', $property: --border-gradient-stop-color,
+  $modifier: $special-colors);
+  @include utility($classname: 'border-gradient.stop-shade', $property: --border-gradient-stop-color, $modifier: $color-shades);
+  @include utility($classname: 'border-gradient.stop-tone', $property: --border-gradient-stop-color, $modifier: $color-tones);
+  @include utility($classname: 'border-gradient.stop-tint', $property: --border-gradient-stop-color, $modifier: $color-tints);
+  @include utility($classname: 'border-gradient.angle', $property: --border-gradient-angle, $modifier: $background-gradient-angle);
+  @include utility($classname: 'border-gradient.curve-border', $property: --border-gradient-radius, $modifier: $border-radius);
+}
