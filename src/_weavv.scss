@@ -1,0 +1,35 @@
+/**
+ * @file: weavv.scss
+ * @desc: the core engine
+ */
+
+@import 'configs/modifiers';
+@import 'configs/variants';
+@import 'configs/options';
+
+@import 'modules/helpers';
+@import 'modules/core';
+@import 'modules/api';
+
+@import 'modules/utilities/accessibility';
+@import 'modules/utilities/animations';
+@import 'modules/utilities/backgrounds';
+@import 'modules/utilities/borders';
+@import 'modules/utilities/clipping';
+@import 'modules/utilities/effects';
+@import 'modules/utilities/filters';
+@import 'modules/utilities/flexbox';
+@import 'modules/utilities/fluids';
+@import 'modules/utilities/interactivity';
+@import 'modules/utilities/layouts';
+@import 'modules/utilities/rendering';
+@import 'modules/utilities/sizing';
+@import 'modules/utilities/spacing';
+@import 'modules/utilities/svg';
+@import 'modules/utilities/theme';
+@import 'modules/utilities/transforms';
+@import 'modules/utilities/transitions';
+@import 'modules/utilities/typography';
+
+@import 'labs';
+@import 'plugins';

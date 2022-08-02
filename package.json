@@ -1,17 +1,17 @@
 {
   "name": "weavv-css",
-  "version": "1.2.1",
+  "version": "1.0.0",
   "description": "A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level",
   "main": "./dist/weavv-1.2.1.min.css",
   "scripts": {
     "gulp": "gulp",
-    "build": "gulp build",
+    "build-full": "gulp build-weavv-full",
+    "build-min": "gulp build-weavv-min",
     "update-version": "gulp versioning",
     "clean": "gulp clean"
   },
   "keywords": [
     "css-framework",
-    "css-library",
     "css-utilites",
     "functional-css",
     "lowlevel-css",

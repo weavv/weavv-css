@@ -2,7 +2,7 @@
 
 # A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level.
 
-Version 1.2.0
+Version 1.0.0
 
 ## Documentation
 
@@ -13,10 +13,37 @@ Version 1.2.0
 - [WEAVV Playground](https://weavvcss.netlify.app/playground) - Live code editor for testing and prototyping UI.
 - [WEAVV CLI](https://www.npmjs.com/package/weavv-cli) - Create basic empty project on-the-go.
 
+## Build
+
+```bash
+$ git clone https://github.com/weavv-css/weavv-css.git
+$ cd weavv-css
+$ npm install
+```
+
+Build full version,
+
+```bash
+$ npm run build-full
+```
+
+Build minimal version,
+
+```bash
+$ npm run build-min
+```
+
+Build file is locate in `./dist/` directory.
+
 ## Community
 
-- [Discord]()
-- [Github]()
+- [Discord](https://discord.gg/GQh499GpGq)
+- [Twitter](https://twitter.com/weavvcss)
+- [Github](https://github.com/weavv/weavv-css)
+
+## Credits
+
+[Sass](), [NodeJs](), [Gulp](), [Normalize](), [PostCSS]().
 
 ---
 
