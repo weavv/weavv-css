@@ -8,14 +8,15 @@ const sizereport = require('gulp-sizereport')
 const sourcemaps = require('gulp-sourcemaps')
 const stringReplace = require('gulp-replace')
 
-const newVersion = '1.2.1'
+const newVersion = '1.0.0'
 const distCssPath = 'dist'
 
 /*
  * Scripts
  */
 
-gulp.task('build:weavv-css', shell.task('sass --quiet --no-source-map ./src/weavv.scss ./dist/weavv-' + newVersion + '.css'))
+gulp.task('build-weavv-full', shell.task('sass --quiet --no-source-map ./src/full.scss ./dist/weavv-' + newVersion + '.css'))
+gulp.task('build-weavv-min', shell.task('sass --quiet --no-source-map ./src/minimal.scss ./dist/weavv-' + newVersion + '.css'))
 
 gulp.task('clean', shell.task('rm -rfv ./weavv.scss ./dist/*'))
 
@@ -55,8 +56,13 @@ gulp.task('versioning:package-json', () => {
     .pipe(stringReplace(version, newVersion))
     .pipe(gulp.dest('.'))
 })
-gulp.task('versioning:weavv-scss', () => {
-  return gulp.src('./src/weavv.scss')
+gulp.task('versioning:weavv-full', () => {
+  return gulp.src('./src/full.scss')
+    .pipe(stringReplace(version, newVersion))
+    .pipe(gulp.dest('./src/'))
+})
+gulp.task('versioning:weavv-min', () => {
+  return gulp.src('./src/minimal.scss')
     .pipe(stringReplace(version, newVersion))
     .pipe(gulp.dest('./src/'))
 })
@@ -149,7 +155,8 @@ gulp.task('post-processing', gulp.series(
 
 gulp.task('versioning', gulp.series(
   'versioning:package-json',
-  'versioning:weavv-scss',
+  'versioning:weavv-full',
+  'versioning:weavv-min',
   'versioning:readme-md'
 ))
 
@@ -163,8 +170,15 @@ gulp.task('cleanup', gulp.series(
  * Main Tasks
  */
 
-gulp.task('build', gulp.series(
-  'build:weavv-css',
+gulp.task('build-full', gulp.series(
+  'build-weavv-full',
+  'versioning',
+  'post-processing',
+  'cleanup'
+))
+
+gulp.task('build-min', gulp.series(
+  'build-weavv-min',
   'versioning',
   'post-processing',
   'cleanup'
