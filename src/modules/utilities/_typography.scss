@@ -240,7 +240,8 @@
 }
 
 // Utilities for set text type with Google Fonts.
-@if (map-get($typography, 'google-fonts', 'alegreya')) {
+// english
+@if (map-get($typography, 'google-fonts', 'english', 'alegreya')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Alegreya', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-alegreya {
@@ -250,7 +251,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'alegreya-sans')) {
+@if (map-get($typography, 'google-fonts', 'english', 'alegreya-sans')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Alegreya+San', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-alegreya-sans {
@@ -260,7 +261,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'archivo-narrow')) {
+@if (map-get($typography, 'google-fonts', 'english', 'archivo-narrow')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Archivo+Narrow', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-archivo-narrow {
@@ -270,7 +271,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'biorhyme')) {
+@if (map-get($typography, 'google-fonts', 'english', 'biorhyme')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'BioRhyme', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-biorhyme {
@@ -280,7 +281,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'cardo')) {
+@if (map-get($typography, 'google-fonts', 'english', 'cardo')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Cardo', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-cardo {
@@ -290,7 +291,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'chivo')) {
+@if (map-get($typography, 'google-fonts', 'english', 'chivo')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Chivo', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-chivo {
@@ -300,7 +301,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'inconsolata')) {
+@if (map-get($typography, 'google-fonts', 'english', 'inconsolata')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Inconsolata', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-inconsolata {
@@ -310,7 +311,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'inknut-antiqua')) {
+@if (map-get($typography, 'google-fonts', 'english', 'inknut-antiqua')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Inknut+Antiqua', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-inknut-antiqua {
@@ -320,7 +321,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'karla')) {
+@if (map-get($typography, 'google-fonts', 'english', 'karla')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Karla', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-karla {
@@ -330,7 +331,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'lato')) {
+@if (map-get($typography, 'google-fonts', 'english', 'lato')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Lato', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-lato {
@@ -340,7 +341,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'libre-baskerville')) {
+@if (map-get($typography, 'google-fonts', 'english', 'libre-baskerville')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Libre+Baskerville', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-libre-baskerville {
@@ -350,7 +351,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'lora')) {
+@if (map-get($typography, 'google-fonts', 'english', 'lora')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Lora', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-lora {
@@ -360,7 +361,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'manrope')) {
+@if (map-get($typography, 'google-fonts', 'english', 'manrope')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Manrope', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-manrope {
@@ -370,7 +371,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'merriweather')) {
+@if (map-get($typography, 'google-fonts', 'english', 'merriweather')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Merriweather', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-merriweather {
@@ -380,7 +381,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'montserrat')) {
+@if (map-get($typography, 'google-fonts', 'english', 'montserrat')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Montserrat', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-montserrat {
@@ -390,7 +391,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'neuton')) {
+@if (map-get($typography, 'google-fonts', 'english', 'neuton')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Neuton', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-neuton {
@@ -400,7 +401,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'open-sans')) {
+@if (map-get($typography, 'google-fonts', 'english', 'open-sans')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Open+Sans', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-open-sans {
@@ -410,7 +411,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'pt-sans')) {
+@if (map-get($typography, 'google-fonts', 'english', 'pt-sans')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'PT+Sans', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-pt-sans {
@@ -420,7 +421,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'pt-serif')) {
+@if (map-get($typography, 'google-fonts', 'english', 'pt-serif')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'PT+Serif', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-pt-serif {
@@ -430,7 +431,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'playfair-display')) {
+@if (map-get($typography, 'google-fonts', 'english', 'playfair-display')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Playfair+Display', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-playfair-display {
@@ -440,7 +441,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'poppins')) {
+@if (map-get($typography, 'google-fonts', 'english', 'poppins')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Poppins', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-poppins {
@@ -450,7 +451,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'proza-libre')) {
+@if (map-get($typography, 'google-fonts', 'english', 'proza-libre')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Proza+Libre', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-proza-libre {
@@ -460,7 +461,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'raleway')) {
+@if (map-get($typography, 'google-fonts', 'english', 'raleway')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Raleway', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-raleway {
@@ -470,7 +471,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'roboto')) {
+@if (map-get($typography, 'google-fonts', 'english', 'roboto')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Roboto', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-roboto {
@@ -480,7 +481,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'roboto-slab')) {
+@if (map-get($typography, 'google-fonts', 'english', 'roboto-slab')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Roboto+Slab', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-roboto-slab {
@@ -490,7 +491,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'rubik')) {
+@if (map-get($typography, 'google-fonts', 'english', 'rubik')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Rubik', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-rubik {
@@ -500,7 +501,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'source-sans-pro')) {
+@if (map-get($typography, 'google-fonts', 'english', 'source-sans-pro')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Source+Sans+Pro', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-source-sans-pro {
@@ -510,7 +511,7 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'source-serif-pro')) {
+@if (map-get($typography, 'google-fonts', 'english', 'source-serif-pro')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Source+Serif+Pro', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-source-serif-pro {
@@ -520,12 +521,74 @@
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'spectral')) {
+@if (map-get($typography, 'google-fonts', 'english', 'spectral')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Spectral', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-spectral {
       @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
         font-family: 'Spectral', sans-serif #{$override};
+      }
+    }
+  }
+}
+// chinese
+@if (map-get($typography, 'google-fonts', 'chinese', 'noto-sans-hk')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto+Sans+HK', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-sans-hk {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'chinese', 'noto-sans-sc')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto+Sans+SC', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-sans-sc {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'chinese', 'noto-serif-sc')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto+Serif+SC', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-serif-sc {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'chinese', 'zcool-qingke-huangyou')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'ZCOOL+QingKe+HuangYou', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-zcool-qingke-huangyou {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'chinese', 'zcool-kuaile')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'ZCOOL+KuaiLe', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-zcool-kuaile {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
+      }
+    }
+  }
+}
+// japanese
+@if (map-get($typography, 'google-fonts', 'japanese', 'zcool-kuaile')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'ZCOOL+KuaiLe', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-zcool-kuaile {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans HK', sans-serif #{$override};
       }
     }
   }
