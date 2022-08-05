@@ -588,7 +588,147 @@
     @include google-fonts((font: 'ZCOOL+KuaiLe', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-zcool-kuaile {
       @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
-        font-family: 'Noto Sans HK', sans-serif #{$override};
+        font-family: 'ZCOOL KuaiLe', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'noto-serif-jp')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto+Serif+JP', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-serif-jp {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Serif JP', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'noto-serif-jp')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto+Serif+JP', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-serif-jp {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Serif JP', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'm-plus-rounded-1c')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'M+PLUS+Rounded+1c', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-m-plus-rounded-1c {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'M PLUS Rounded 1c', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'kaisei-opti')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Kaisei+Opti', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-kaisei-opti {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Kaisei Opti', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'zen-maru-gothic')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Zen+Maru+Gothic', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-zen-maru-gothic {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Zen Maru Gothic', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'dela-gothic-one')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Dela+Gothic+One', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-dela-gothic-one {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Dela Gothic One', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'japanese', 'stick')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Stick', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-stick {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Stick', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'noto-sans-kr')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto Sans KR', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-sans-kr {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Sans KR', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'noto-serif-kr')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto Serif KR', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-noto-sans-kr {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Noto Serif KR', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'black-han-sans')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Noto Serif KR', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-black-han-sans {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Black Han Sans', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'Jua')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Jua', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-jua {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Jua', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'do-hyeon')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Do Hyeon', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-do-hyeon {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Do Hyeon', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'sunflower')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Do Hyeon', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-sunflower {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Sunflower', sans-serif #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'google-fonts', 'korean', 'nanum-myeongjo')) {
+  @include variant($v-google-fonts) using ($props...) {
+    @include google-fonts((font: 'Nanu Mmyeongjo', weight: '100;200;300;400;500;600;700;800;900'));
+    #{$id}font-nanum-myeongjo {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        font-family: 'Nanum Myeongjo', sans-serif #{$override};
       }
     }
   }
