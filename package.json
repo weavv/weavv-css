@@ -5,8 +5,8 @@
   "main": "./dist/weavv-1.0.0.min.css",
   "scripts": {
     "gulp": "gulp",
-    "build-full": "gulp build-weavv-full",
-    "build-min": "gulp build-weavv-min",
+    "build-full": "gulp build-full",
+    "build-min": "gulp build-min",
     "update-version": "gulp versioning",
     "clean": "gulp clean"
   },
