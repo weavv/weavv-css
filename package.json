@@ -1,5 +1,5 @@
 {
-  "name": "weavv-css",
+  "name": "weavvcss",
   "version": "1.0.0",
   "description": "A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level",
   "main": "./dist/weavv-1.0.0.min.css",
