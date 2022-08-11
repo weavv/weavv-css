@@ -8,7 +8,7 @@ const sizereport = require('gulp-sizereport')
 const sourcemaps = require('gulp-sourcemaps')
 const stringReplace = require('gulp-replace')
 
-const newVersion = '1.0.0'
+const newVersion = '1.0.1'
 const distCssPath = 'dist'
 
 /*
