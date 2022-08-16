@@ -43,7 +43,7 @@ Build file is locate in `./dist/` directory.
 
 ## Credits
 
-[Sass](), [NodeJs](), [Gulp](), [Normalize](), [PostCSS]().
+[Sass](https://sass-lang.com/), [NodeJs](https://nodejs.org/), [Gulp](https://gulpjs.com/), [Normalize](https://necolas.github.io/normalize.css/), [PostCSS](https://postcss.org/).
 
 ---
 
