@@ -1,18 +1,14 @@
-/**
- * @file: configs/components/_minimal.scss
- */
+@charset 'utf-8';
 
-/**
-  customize WEAVV CSS framework by enable (true)
-  or disable (true) selected components.
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:selector';
+@use 'sass:string';
 
-  EXAMPLE:
+$version: '1.0.1';
 
-  $category: (
-    'component': boolean
-  );
-
-*/
+@import 'reset'; // normalize.css v8.0.1
 
 $accessibility: (
   'screen-reader': false,
@@ -28,27 +24,27 @@ $animations: (
 );
 
 $backgrounds: (
-  'attachment': true,
+  'attachment': false,
   'blend': false,
   'border': false,
   'color': (
-    'shade': true,
+    'shade': false,
     'tone': false,
     'tint': false,
   ),
   'gradient': false,
   'gradient-preset': false,
   'opacity': false,
-  'position': true,
-  'repeat': true,
-  'size': true,
+  'position': false,
+  'repeat': false,
+  'size': false,
 );
 
 $borders: (
   'color': false,
   'gradient': false,
-  'radius': true,
-  'style': true,
+  'radius': false,
+  'style': false,
   'width': false,
   'curve-object': false,
   'dissect': false,
@@ -67,13 +63,13 @@ $clips: (
 );
 
 $effects: (
-  'box-shadow': true,
+  'box-shadow': false,
   'box-shadow-color': (
     'shade': false,
     'tone': false,
     'tint': false,
   ),
-  'opacity': true,
+  'opacity': false,
   'blend': false,
   'text-offset-shadow': false,
   'text-neon-shadow': (
@@ -102,18 +98,18 @@ $filters: (
 );
 
 $flexbox: (
-  'flex': true,
+  'flex': false,
   'flex-center': false,
-  'align-content': true,
-  'align-items': true,
-  'align-self': true,
-  'basis': true,
-  'direction': true,
+  'align-content': false,
+  'align-items': false,
+  'align-self': false,
+  'basis': false,
+  'direction': false,
   'gap': false,
-  'grow': true,
-  'justify-content': true,
-  'shrink': true,
-  'wrap': true,
+  'grow': false,
+  'justify-content': false,
+  'shrink': false,
+  'wrap': false,
 );
 
 $fluids: (
@@ -128,15 +124,15 @@ $interactivity: (
     'tone': false,
     'tint': false,
   ),
-  'appearance': true,
-  'cursor': true,
-  'outline': true,
-  'overscroll': true,
+  'appearance': false,
+  'cursor': false,
+  'outline': false,
+  'overscroll': false,
   'pointer-events': false,
-  'resize': true,
+  'resize': false,
   'scroll-bar': false,
   'scroll-bar-color': (
-    'shade': true,
+    'shade': false,
     'tone': false,
     'tint': false,
   ),
@@ -145,7 +141,7 @@ $interactivity: (
   'scroll-smooth': false,
   'scroll-snap': false,
   'text-highlight': (
-    'shade': true,
+    'shade': false,
     'tone': false,
     'tint': false,
   ),
@@ -155,17 +151,17 @@ $interactivity: (
 
 $layouts: (
   'aspect-ratio': false,
-  'clear': true,
+  'clear': false,
   'render': false,
-  'display': true,
-  'float': true,
-  'top-bottom-left-right': true,
-  'object-fit': true,
-  'object-position': true,
-  'overflow': true,
-  'position': true,
+  'display': false,
+  'float': false,
+  'top-bottom-left-right': false,
+  'object-fit': false,
+  'object-position': false,
+  'overflow': false,
+  'position': false,
   'visibility': false,
-  'z-index': true,
+  'z-index': false,
 );
 
 $rendering: (
@@ -174,8 +170,8 @@ $rendering: (
 );
 
 $sizing: (
-  'height': true,
-  'width': true,
+  'height': false,
+  'width': false,
   'max-height': false,
   'max-width': false,
   'min-height': false,
@@ -185,8 +181,8 @@ $sizing: (
 
 $spaces: (
   'equal': false,
-  'margin': true,
-  'padding': true,
+  'margin': false,
+  'padding': false,
 );
 
 $svg: (
@@ -227,10 +223,10 @@ $typography: (
   ),
   'counter': false,
   'font-family': false,
-  'font-size': true,
+  'font-size': false,
   'font-smoothing': false,
-  'font-style': true,
-  'font-weight': true,
+  'font-style': false,
+  'font-weight': false,
   'glyphs': false,
   'google-fonts': (
     'english': (
@@ -290,7 +286,7 @@ $typography: (
     ),
   ),
   'letter-spacing': false,
-  'line-height': true,
+  'line-height': false,
   'list-style-position': false,
   'list-style-type': false,
   'placeholder-color': (
@@ -298,10 +294,10 @@ $typography: (
     'tone': false,
     'tint': false,
   ),
-  'text-align': true,
+  'text-align': false,
   'text-clamp': false,
   'text-color': (
-    'shade': true,
+    'shade': false,
     'tone': false,
     'tint': false,
   ),
@@ -317,4 +313,6 @@ $typography: (
   'word-break': false,
   'writing-mode': false,
 );
+
+@import "weavv";
 
