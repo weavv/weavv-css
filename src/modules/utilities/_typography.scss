@@ -567,7 +567,7 @@
     @include google-fonts((font: 'ZCOOL+QingKe+HuangYou', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-zcool-qingke-huangyou {
       @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
-        font-family: 'Noto Sans HK', sans-serif #{$override};
+        font-family: 'ZCOOL QingKe HuangYou', sans-serif #{$override};
       }
     }
   }
@@ -577,32 +577,13 @@
     @include google-fonts((font: 'ZCOOL+KuaiLe', weight: '100;200;300;400;500;600;700;800;900'));
     #{$id}font-zcool-kuaile {
       @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
-        font-family: 'Noto Sans HK', sans-serif #{$override};
-      }
-    }
-  }
-}
-// japanese
-@if (map-get($typography, 'google-fonts', 'japanese', 'zcool-kuaile')) {
-  @include variant($v-google-fonts) using ($props...) {
-    @include google-fonts((font: 'ZCOOL+KuaiLe', weight: '100;200;300;400;500;600;700;800;900'));
-    #{$id}font-zcool-kuaile {
-      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
         font-family: 'ZCOOL KuaiLe', sans-serif #{$override};
       }
     }
   }
 }
-@if (map-get($typography, 'google-fonts', 'japanese', 'noto-serif-jp')) {
-  @include variant($v-google-fonts) using ($props...) {
-    @include google-fonts((font: 'Noto+Serif+JP', weight: '100;200;300;400;500;600;700;800;900'));
-    #{$id}font-noto-serif-jp {
-      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
-        font-family: 'Noto Serif JP', sans-serif #{$override};
-      }
-    }
-  }
-}
+
+// japanese
 @if (map-get($typography, 'google-fonts', 'japanese', 'noto-serif-jp')) {
   @include variant($v-google-fonts) using ($props...) {
     @include google-fonts((font: 'Noto+Serif+JP', weight: '100;200;300;400;500;600;700;800;900'));

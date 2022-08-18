@@ -22,13 +22,319 @@
 @use 'sass:selector';
 @use 'sass:string';
 
-$version: '1.0.0';
+$version: '1.0.1';
 
 @import 'reset'; // normalize.css v8.0.1
 
 /*! weavv.css v#{$version} | MIT License | github.com/weavv/weavv-css */
 
-@import "configs/components/full";
+/**
+  customize WEAVV utilities by enable (true)
+  or disable (false) selected components.
+*/
+
+$accessibility: (
+  'screen-reader': true,
+);
+
+$animations: (
+  'animation': true,
+  'loop': true,
+  'blur': true,
+  'fade': true,
+  'roll': true,
+  'slide': true,
+);
+
+$backgrounds: (
+  'attachment': true,
+  'blend': true,
+  'border': true,
+  'color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'gradient': true,
+  'gradient-preset': true,
+  'opacity': true,
+  'position': true,
+  'repeat': true,
+  'size': true,
+);
+
+$borders: (
+  'color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'gradient': true,
+  'radius': true,
+  'style': true,
+  'width': true,
+  'curve-object': true,
+  'dissect': true,
+  'dissect-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'dissect-opacity': true,
+);
+
+$clips: (
+  'polygon': true,
+  'circle': true,
+  'ellipse': true,
+);
+
+$effects: (
+  'box-shadow': true,
+  'box-shadow-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'opacity': true,
+  'blend': true,
+  'text-offset-shadow': true,
+  'text-neon-shadow': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+);
+
+$filters: (
+  'filter': true,
+  'blur': true,
+  'brightness': true,
+  'contrast': true,
+  'drop-shadow': true,
+  'saturate': true,
+  'hue-rotate': true,
+  'smooth-animation-speed': true,
+  'backdrop-filter': true,
+  'backdrop-filter-brightness': true,
+  'backdrop-filter-contrast': true,
+  'backdrop-filter-saturate': true,
+  'backdrop-filter-blur': true,
+  'backdrop-filter-hue-rotate': true,
+  'invert': true,
+);
+
+$flexbox: (
+  'flex': true,
+  'flex-center': true,
+  'align-content': true,
+  'align-items': true,
+  'align-self': true,
+  'basis': true,
+  'direction': true,
+  'gap': true,
+  'grow': true,
+  'justify-content': true,
+  'shrink': true,
+  'wrap': true,
+);
+
+$fluids: (
+  'font-size': true,
+  'margin': true,
+  'padding': true,
+);
+
+$interactivity: (
+  'accent-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'appearance': true,
+  'cursor': true,
+  'outline': true,
+  'overscroll': true,
+  'pointer-events': true,
+  'resize': true,
+  'scroll-bar': true,
+  'scroll-margin': true,
+  'scroll-padding': true,
+  'scroll-smooth': true,
+  'scroll-snap': true,
+  'text-highlight': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'touch-action': true,
+  'user-select': true,
+);
+
+$layouts: (
+  'aspect-ratio': true,
+  'clear': true,
+  'render': true,
+  'display': true,
+  'float': true,
+  'top-bottom-left-right': true,
+  'object-fit': true,
+  'object-position': true,
+  'overflow': true,
+  'position': true,
+  'visibility': true,
+  'z-index': true,
+);
+
+$rendering: (
+  'image-optimization': true,
+  'text-optimization': true,
+);
+
+$sizing: (
+  'height': true,
+  'width': true,
+  'max-height': true,
+  'max-width': true,
+  'min-height': true,
+  'min-width': true,
+  'proportional-scale': true,
+);
+
+$spaces: (
+  'equal': true,
+  'margin': true,
+  'padding': true,
+);
+
+$svg: (
+  'fill-current': true,
+  'stroke-current': true,
+  'stroke-linecap': true,
+  'stroke-width': true,
+);
+
+$themes: (
+  'auto-dark-mode': true,
+  'auto-light-mode': true,
+  'force-light-dark-mode': true,
+);
+
+$transforms: (
+  'transform': true,
+  'translate': true,
+  'origin': true,
+  'perspective': true,
+  'scale': true,
+  'rotate': true,
+  'skew': true,
+);
+
+$transitions: (
+  'transition': true,
+  'duration': true,
+  'timing': true,
+);
+
+$typography: (
+  'column': true,
+  'column-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'counter': true,
+  'font-family': true,
+  'font-size': true,
+  'font-smoothing': true,
+  'font-style': true,
+  'font-weight': true,
+  'glyphs': true,
+  'google-fonts': (
+    'english': (
+      'alegreya': true,
+      'alegreya-sans': true,
+      'archivo-narrow': true,
+      'biorhyme': true,
+      'cardo': true,
+      'chivo': true,
+      'inconsolata': true,
+      'inknut-antiqua': true,
+      'karla': true,
+      'lato': true,
+      'libre-baskerville': true,
+      'lora': true,
+      'manrope': true,
+      'merriweather': true,
+      'montserrat': true,
+      'neuton': true,
+      'open-sans': true,
+      'pt-sans': true,
+      'pt-serif': true,
+      'playfair-display': true,
+      'poppins': true,
+      'proza-libre': true,
+      'raleway': true,
+      'roboto': true,
+      'roboto-slab': true,
+      'rubik': true,
+      'source-sans-pro': true,
+      'source-serif-pro': true,
+      'spectral': true,
+    ),
+    'chinese': (
+      'noto-sans-hk': true,
+      'noto-sans-sc': true,
+      'noto-serif-sc': true,
+      'zcool-qingke-huangyou': true,
+      'zcool-kuaile': true,
+    ),
+    'japanese': (
+      'noto-serif-jp': true,
+      'm-plus-rounded-1c': true,
+      'kaisei-opti': true,
+      'zen-maru-gothic': true,
+      'dela-gothic-one': true,
+      'stick': true,
+    ),
+    'korean': (
+      'noto-sans-kr': true,
+      'noto-serif-kr': true,
+      'black-han-sans': true,
+      'jua': true,
+      'do-hyeon': true,
+      'sunflower': true,
+      'nanum-myeongjo': true,
+    ),
+  ),
+  'letter-spacing': true,
+  'line-height': true,
+  'list-style-position': true,
+  'list-style-type': true,
+  'placeholder-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'text-align': true,
+  'text-clamp': true,
+  'text-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'text-decoration': true,
+  'text-stroke': true,
+  'text-stroke-color': (
+    'shade': true,
+    'tone': true,
+    'tint': true,
+  ),
+  'text-transform': true,
+  'whitespace': true,
+  'word-break': true,
+  'writing-mode': true,
+);
 
 @import "weavv";
 

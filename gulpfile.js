@@ -8,7 +8,7 @@ const sizereport = require('gulp-sizereport')
 const sourcemaps = require('gulp-sourcemaps')
 const stringReplace = require('gulp-replace')
 
-const newVersion = '1.0.0'
+const newVersion = '1.0.1'
 const distCssPath = 'dist'
 
 /*
@@ -17,6 +17,7 @@ const distCssPath = 'dist'
 
 gulp.task('build-weavv-full', shell.task('sass --quiet --no-source-map ./src/full.scss ./dist/weavv-' + newVersion + '.css'))
 gulp.task('build-weavv-min', shell.task('sass --quiet --no-source-map ./src/minimal.scss ./dist/weavv-' + newVersion + '.css'))
+gulp.task('build-weavv-test', shell.task('sass --quiet --no-source-map ./src/test.scss ./dist/weavv-' + newVersion + '.css'))
 
 gulp.task('clean', shell.task('rm -rfv ./weavv.scss ./dist/*'))
 
@@ -179,6 +180,12 @@ gulp.task('build-full', gulp.series(
 
 gulp.task('build-min', gulp.series(
   'build-weavv-min',
+  'post-processing',
+  'cleanup'
+))
+
+gulp.task('build-test', gulp.series(
+  'build-weavv-test',
   'versioning',
   'post-processing',
   'cleanup'

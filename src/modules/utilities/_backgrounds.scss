@@ -127,10 +127,12 @@
       }
     }
   }
+  @include utility($classname: 'bg-gradient.start', $property: --bg-gradient-start-color, $modifier: $special-colors);
   @include utility($classname: 'bg-gradient.start-shade', $property: --bg-gradient-start-color, $modifier: $color-shades);
   @include utility($classname: 'bg-gradient.start-tone', $property: --bg-gradient-start-color, $modifier: $color-tones);
   @include utility($classname: 'bg-gradient.start-tint', $property: --bg-gradient-start-color, $modifier: $color-tints);
   @include utility($classname: 'bg-gradient.start', $property: --bg-gradient-primary, $modifier: $background-gradient-space);
+  @include utility($classname: 'bg-gradient.stop', $property: --bg-gradient-stop-color, $modifier: $special-colors);
   @include utility($classname: 'bg-gradient.stop-shade', $property: --bg-gradient-stop-color, $modifier: $color-shades);
   @include utility($classname: 'bg-gradient.stop-tone', $property: --bg-gradient-stop-color, $modifier: $color-tones);
   @include utility($classname: 'bg-gradient.stop-tint', $property: --bg-gradient-stop-color, $modifier: $color-tints);
@@ -201,3 +203,5 @@
     }
   }
 }
+
+// Utilities for sets the background gradient with transparent

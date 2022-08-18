@@ -2,7 +2,7 @@
 
 # A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level.
 
-Version 1.0.0
+Version 1.0.1
 
 ## Documentation
 
@@ -43,7 +43,7 @@ Build file is locate in `./dist/` directory.
 
 ## Credits
 
-[Sass](), [NodeJs](), [Gulp](), [Normalize](), [PostCSS]().
+[Sass](https://sass-lang.com/), [NodeJs](https://nodejs.org/), [Gulp](https://gulpjs.com/), [Normalize](https://necolas.github.io/normalize.css/), [PostCSS](https://postcss.org/).
 
 ---
 

@@ -1,0 +1,318 @@
+@charset 'utf-8';
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:selector';
+@use 'sass:string';
+
+$version: '1.0.1';
+
+@import 'reset'; // normalize.css v8.0.1
+
+$accessibility: (
+  'screen-reader': false,
+);
+
+$animations: (
+  'animation': false,
+  'loop': false,
+  'blur': false,
+  'fade': false,
+  'roll': false,
+  'slide': false,
+);
+
+$backgrounds: (
+  'attachment': false,
+  'blend': false,
+  'border': false,
+  'color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'gradient': false,
+  'gradient-preset': false,
+  'opacity': false,
+  'position': false,
+  'repeat': false,
+  'size': false,
+);
+
+$borders: (
+  'color': false,
+  'gradient': false,
+  'radius': false,
+  'style': false,
+  'width': false,
+  'curve-object': false,
+  'dissect': false,
+  'dissect-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'dissect-opacity': false,
+);
+
+$clips: (
+  'polygon': false,
+  'circle': false,
+  'ellipse': false,
+);
+
+$effects: (
+  'box-shadow': false,
+  'box-shadow-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'opacity': false,
+  'blend': false,
+  'text-offset-shadow': false,
+  'text-neon-shadow': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+);
+
+$filters: (
+  'filter': false,
+  'blur': false,
+  'brightness': false,
+  'contrast': false,
+  'drop-shadow': false,
+  'saturate': false,
+  'hue-rotate': false,
+  'smooth-animation-speed': false,
+  'backdrop-filter': false,
+  'backdrop-filter-brightness': false,
+  'backdrop-filter-contrast': false,
+  'backdrop-filter-saturate': false,
+  'backdrop-filter-blur': false,
+  'backdrop-filter-hue-rotate': false,
+  'invert': false,
+);
+
+$flexbox: (
+  'flex': false,
+  'flex-center': false,
+  'align-content': false,
+  'align-items': false,
+  'align-self': false,
+  'basis': false,
+  'direction': false,
+  'gap': false,
+  'grow': false,
+  'justify-content': false,
+  'shrink': false,
+  'wrap': false,
+);
+
+$fluids: (
+  'font-size': false,
+  'margin': false,
+  'padding': false,
+);
+
+$interactivity: (
+  'accent-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'appearance': false,
+  'cursor': false,
+  'outline': false,
+  'overscroll': false,
+  'pointer-events': false,
+  'resize': false,
+  'scroll-bar': false,
+  'scroll-bar-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'scroll-margin': false,
+  'scroll-padding': false,
+  'scroll-smooth': false,
+  'scroll-snap': false,
+  'text-highlight': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'touch-action': false,
+  'user-select': false,
+);
+
+$layouts: (
+  'aspect-ratio': false,
+  'clear': false,
+  'render': false,
+  'display': false,
+  'float': false,
+  'top-bottom-left-right': false,
+  'object-fit': false,
+  'object-position': false,
+  'overflow': false,
+  'position': false,
+  'visibility': false,
+  'z-index': false,
+);
+
+$rendering: (
+  'image-optimization': false,
+  'text-optimization': false,
+);
+
+$sizing: (
+  'height': false,
+  'width': false,
+  'max-height': false,
+  'max-width': false,
+  'min-height': false,
+  'min-width': false,
+  'proportional-scale': false,
+);
+
+$spaces: (
+  'equal': false,
+  'margin': false,
+  'padding': false,
+);
+
+$svg: (
+  'fill-current': false,
+  'stroke-current': false,
+  'stroke-linecap': false,
+  'stroke-width': false,
+);
+
+$themes: (
+  'auto-dark-mode': false,
+  'auto-light-mode': false,
+  'force-light-dark-mode': false,
+);
+
+$transforms: (
+  'transform': false,
+  'translate': false,
+  'origin': false,
+  'perspective': false,
+  'scale': false,
+  'rotate': false,
+  'skew': false,
+);
+
+$transitions: (
+  'transition': false,
+  'duration': false,
+  'timing': false,
+);
+
+$typography: (
+  'column': false,
+  'column-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'counter': false,
+  'font-family': false,
+  'font-size': false,
+  'font-smoothing': false,
+  'font-style': false,
+  'font-weight': false,
+  'glyphs': false,
+  'google-fonts': (
+    'english': (
+      'alegreya': false,
+      'alegreya-sans': false,
+      'archivo-narrow': false,
+      'biorhyme': false,
+      'cardo': false,
+      'chivo': false,
+      'inconsolata': false,
+      'inknut-antiqua': false,
+      'karla': false,
+      'lato': false,
+      'libre-baskerville': false,
+      'lora': false,
+      'manrope': false,
+      'merriweather': false,
+      'montserrat': false,
+      'neuton': false,
+      'open-sans': false,
+      'pt-sans': false,
+      'pt-serif': false,
+      'playfair-display': false,
+      'poppins': false,
+      'proza-libre': false,
+      'raleway': false,
+      'roboto': false,
+      'roboto-slab': false,
+      'rubik': false,
+      'source-sans-pro': false,
+      'source-serif-pro': false,
+      'spectral': false,
+    ),
+    'chinese': (
+      'noto-sans-hk': false,
+      'noto-sans-sc': false,
+      'noto-serif-sc': false,
+      'zcool-qingke-huangyou': false,
+      'zcool-kuaile': false,
+    ),
+    'japanese': (
+      'noto-serif-jp': false,
+      'm-plus-rounded-1c': false,
+      'kaisei-opti': false,
+      'zen-maru-gothic': false,
+      'dela-gothic-one': false,
+      'stick': false,
+    ),
+    'korean': (
+      'noto-sans-kr': false,
+      'noto-serif-kr': false,
+      'black-han-sans': false,
+      'jua': false,
+      'do-hyeon': false,
+      'sunflower': false,
+      'nanum-myeongjo': false,
+    ),
+  ),
+  'letter-spacing': false,
+  'line-height': false,
+  'list-style-position': false,
+  'list-style-type': false,
+  'placeholder-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'text-align': false,
+  'text-clamp': false,
+  'text-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'text-decoration': false,
+  'text-stroke': false,
+  'text-stroke-color': (
+    'shade': false,
+    'tone': false,
+    'tint': false,
+  ),
+  'text-transform': false,
+  'whitespace': false,
+  'word-break': false,
+  'writing-mode': false,
+);
+
+@import "weavv";
+

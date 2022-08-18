@@ -200,10 +200,10 @@
   @include utility($classname: 'curve-object.radius-tr', $property: --object-radius-top-right, $modifier: $border-curve-object);
   @include utility($classname: 'curve-object.radius-br', $property: --object-radius-bottom-right, $modifier: $border-curve-object);
   @include utility($classname: 'curve-object.radius-bl', $property: --object-radius-bottom-left, $modifier: $border-curve-object);
-  @include utility($classname: 'curve-object.curve-border-ltb', $property: --object-curve-border-left-top-bottom, $modifier: $border-curve-object);
-  @include utility($classname: 'curve-object.curve-border-rtb', $property: --object-curve-border-right-top-bottom, $modifier: $border-curve-object);
-  @include utility($classname: 'curve-object.curve-border-rbt', $property: --object-curve-border-right-bottom-top, $modifier: $border-curve-object);
-  @include utility($classname: 'curve-object.curve-border-lbt', $property: --object-curve-border-left-bottom-top, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-ltb', $property: --object-curve-border-left-top-bottom, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-rtb', $property: --object-curve-border-right-top-bottom, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-rbt', $property: --object-curve-border-right-bottom-top, $modifier: $border-curve-object);
+  @include utility($classname: 'curve-object.curve-lbt', $property: --object-curve-border-left-bottom-top, $modifier: $border-curve-object);
 }
 
 // Utilities for sets border with two different colours as gradient, adjust gradient angle and configure inner colour to an element.
