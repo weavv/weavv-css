@@ -334,3 +334,47 @@
     }
   }
 }
+
+// Utilities for sets the placeholder color using the ::placeholder pseudo element.
+@if (map-get($typography, 'placeholder-color', 'shade')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-shades-legacy {
+      #{$id}placeholder-shade-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+
+  // Utilities sets the placeholder color transparent to overwrite native browser color.
+  @include variant($v-placeholder-color) using ($props...) {
+    #{$id}placeholder-transparent::placeholder {
+      @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+        color: transparent #{$override};
+      }
+    }
+  }
+}
+@if (map-get($typography, 'placeholder-color', 'tone')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tones-legacy {
+      #{$id}placeholder-tone-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+}
+@if (map-get($typography, 'placeholder-color', 'tint')) {
+  @include variant($v-placeholder-color) using ($props...) {
+    @each $palette, $modifier, $hex in $color-tints-legacy {
+      #{$id}placeholder-tint-#{$palette}-#{$modifier}::placeholder {
+        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
+          color: #{$hex} #{$override}
+        }
+      }
+    }
+  }
+}
