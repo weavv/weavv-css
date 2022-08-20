@@ -2,7 +2,7 @@
 
 # A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level.
 
-Version 1.0.1
+Version 1.0.2
 
 ## Documentation
 
