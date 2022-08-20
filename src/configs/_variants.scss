@@ -73,6 +73,7 @@ $v-overscroll: ('responsive');
 $v-outline: ('hover');
 $v-outline-color: ('hover');
 $v-accent-color: ('hover');
+$v-placeholder-color: ('dark-mode', 'focus');
 
 /* layouts */
 
@@ -128,19 +129,18 @@ $v-transition: ('reduce-motion');
 
 $v-font-family: ('first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
 $v-google-fonts: ('first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
-$v-font-size: ('responsive', 'fullscreen', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
-$v-font-weight: ('responsive', 'hover', 'group-hover', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-font-size: ('responsive', 'fullscreen', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5', 'first-letter');
+$v-font-weight: ('responsive', 'hover', 'group-hover', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5', 'first-letter');
 $v-letter-spacing: ('responsive');
 $v-line-height: ('responsive');
-$v-placeholder-color: ('dark-mode', 'focus');
 $v-text-align: ('responsive', 'expand');
-$v-text-color: ('dark-mode', 'hover', 'group-hover', 'focus', 'group-focus', 'focus-visible', 'focus-within', 'visited', 'active', 'checked', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
+$v-text-color: ('dark-mode', 'hover', 'group-hover', 'focus', 'group-focus', 'focus-visible', 'focus-within', 'visited', 'active', 'checked', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5', 'first-letter');
 $v-text-decoration: ('responsive', 'hover', 'group-hover', 'focus', 'focus-visible', 'focus-within', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
 $v-text-transform: ('responsive', 'first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
 $v-word-break: ('responsive');
 $v-text-glyphs: ('responsive');
-$v-text-stroke: ('hover');
-$v-text-stroke-color: ('hover');
+$v-text-stroke: ('hover', 'first-letter');
+$v-text-stroke-color: ('hover', 'first-letter');
 $v-vertical-align: ('expand');
 $v-whitespace: ('responsive', 'expand','first-of-type', 'last-of-type', 'child-1', 'child-2', 'child-3', 'child-4', 'child-5');
 $v-column: ('responsive');

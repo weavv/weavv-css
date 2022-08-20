@@ -1,8 +1,8 @@
 {
   "name": "weavvcss",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level",
-  "main": "./dist/weavv-1.0.1.min.css",
+  "main": "./dist/weavv-1.0.2.min.css",
   "scripts": {
     "gulp": "gulp",
     "build-full": "gulp build-full",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "gulp": "^4.0.0",
-    "gulp-bytediff": "^1.0.1",
+    "gulp-bytediff": "^1.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-gzip": "^1.4.2",
     "gulp-postcss": "^9.0.1",
