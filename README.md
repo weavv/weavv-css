@@ -1,4 +1,4 @@
-![image](assets/banner.png)
+![image](https://github.com/weavv/weavv-css/assets/banner.png)
 
 # A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level.
 
