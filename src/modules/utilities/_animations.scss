@@ -3,9 +3,10 @@
  */
 
 // Utilities for sets the animation control with loops, durations and delays.
+// NOTE: classname `.animations` replaced with `.morph` since v1.0.4
 @if (map-get($animations, 'animation')) {
   @include variant(()) using ($props...) {
-    #{$id}animation {
+    #{$id}morph {
       @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
         animation-duration: 1s #{$override};
         animation-fill-mode: both #{$override};
@@ -14,13 +15,13 @@
   }
 }
 @if (map-get($animations, 'loop')) {
-  @include utility($classname: 'animation.loop', $property: animation-iteration-count, $modifier: $animation-loop);
+  @include utility($classname: 'morph.loop', $property: animation-iteration-count, $modifier: $animation-loop);
 }
 @if (map-get($animations, 'delay')) {
-  @include utility($classname: 'animation.delay', $property: animation-delay, $modifier: $animation-delay);
+  @include utility($classname: 'morph.delay', $property: animation-delay, $modifier: $animation-delay);
 }
 @if (map-get($animations, 'duration')) {
-  @include utility($classname: 'animation.duration', $property: animation-duration, $modifier: $animation-duration);
+  @include utility($classname: 'morph.duration', $property: animation-duration, $modifier: $animation-duration);
 }
 
 // Utilities for sets the blur animation to an element.
