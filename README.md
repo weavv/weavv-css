@@ -2,7 +2,9 @@
 
 # A colossal low-level utility CSS framework for crafting a beautiful and elegant user interface at an atomic level.
 
-Version 1.0.3
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/weavvcss.svg)](https://badge.fury.io/js/weavvcss)
+[![npm downloads](https://img.shields.io/npm/dm/weavvcss.svg)](https://www.npmjs.com/package/weavvcss)
 
 ## Documentation
 
