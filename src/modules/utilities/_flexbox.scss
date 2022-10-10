@@ -29,21 +29,7 @@
 
 // Utilities for set inner spacing in between the flex child elements.
 @if (map-get($flexbox, 'gap')) {
-  @include variant($v-flex-gap) using ($props...) {
-    #{$id}flex-gap {
-      @include pseudo($flex-gap, $props...) using ($value){
-        margin: calc(-1 * #{$value}) 0 0 calc(-1 * #{$value});
-      }
-    }
-    @each $modifier, $mode in $flex-gap {
-      $TRASH-flexgap: '.trashflexgaptoberemoved';
-      #{$id}flex-gap-#{$modifier}#{$TRASH-flexgap} {
-        @include pseudo((null: null), $props..., $modifier: false) using ($value: null) {
-          margin: #{$mode} 0 0 #{$mode} #{$override};
-        }
-      }
-    }
-  }
+  @include utility($classname: 'flex-gap', $property: gap, $modifier: $flex-gap, $variant: $v-flex-gap);
 }
 
 // Utilities for controls how flex items grow.
